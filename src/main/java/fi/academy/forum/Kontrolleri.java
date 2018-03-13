@@ -47,7 +47,8 @@ public class Kontrolleri {
     public String kirjaudu(Kayttaja kayttaja, Model model) {
         Optional<Kayttaja> kirjautunut = krepo.findByNimimerkki(kayttaja.getNimimerkki());
         model.addAttribute("kirjautunut", kirjautunut.get());
-        model.addAttribute("lisattava", new Viesti());
+        model.addAttribute("viestit", repo.findAll());
+        model.addAttribute("lisattava", new Viesti(kayttaja));
 
         return "index";
 
