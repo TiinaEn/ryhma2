@@ -24,10 +24,12 @@ public class Viesti {
 
     public Viesti(Kayttaja kayttaja) {
         this.kayttaja = kayttaja;
+        this.aikaleima = LocalDate.now();
     }
 
 
     public Viesti() {
+        this.aikaleima = LocalDate.now();
     }
 
     public Integer getId() {
