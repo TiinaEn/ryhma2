@@ -14,6 +14,7 @@ public class Kontrolleri {
 
     @Autowired
     private ViestiRepositorio repo;
+    @Autowired
     private KayttajaRepositorio krepo;
 
     @GetMapping("/")
@@ -43,10 +44,9 @@ public class Kontrolleri {
 
 
     @PostMapping("/kirjaudu")
-    public String kirjaudu(@ModelAttribute Kayttaja kayttaja, Model model) {
-        Optional kirjautunut = krepo.findByNimimerkki(kayttaja.getNimimerkki());
-        if (kirjautunut.isPresent())
-        model.addAttribute("kirjautunut", kirjautunut);
+    public String kirjaudu(Kayttaja kayttaja, Model model) {
+        Optional<Kayttaja> kirjautunut = krepo.findByNimimerkki(kayttaja.getNimimerkki());
+        model.addAttribute("kirjautunut", kirjautunut.get());
         model.addAttribute("lisattava", new Viesti());
 
         return "index";
