@@ -19,6 +19,12 @@ public class ForumApplication {
 			krepo.save(k1);
 			Viesti v1 = new Viesti("terve", k1);
 			vrepo.save(v1);
+			Kayttaja k2 = new Kayttaja("Esko", "admin");
+			krepo.save(k2);
+			Viesti v2 = new Viesti("tervehdys", k2);
+			vrepo.save(v2);
+			Viesti v3 = new Viesti("tervehdys333", k1);
+			vrepo.save(v3);
 		});
 	}
 }

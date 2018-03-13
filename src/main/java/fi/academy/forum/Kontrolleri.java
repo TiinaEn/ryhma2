@@ -11,6 +11,7 @@ import java.util.Optional;
 
 @Controller
 public class Kontrolleri {
+    Kayttaja kirjautunut;
 
     @Autowired
     private ViestiRepositorio repo;
@@ -26,7 +27,7 @@ public class Kontrolleri {
 
     @PostMapping("/lisaaviesti")
     public String lisaaViesti(@ModelAttribute Viesti viesti, Model model) {
-        repo.save(viesti);
+        repo.save(new Viesti(viesti.getTeksti(), kirjautunut));
         model.addAttribute("viestit", repo.findAll());
         model.addAttribute("lisattava", new Viesti());
 
