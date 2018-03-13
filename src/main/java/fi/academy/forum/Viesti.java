@@ -22,6 +22,10 @@ public class Viesti {
         this.kayttaja = kayttaja;
     }
 
+    public Viesti(Kayttaja kayttaja) {
+        this.kayttaja = kayttaja;
+    }
+
     public Viesti() {
     }
 
