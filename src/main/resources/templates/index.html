@@ -1,26 +1,33 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <link rel="stylesheet" type="text/css" href="tyyli.css">
     <meta charset="UTF-8"/>
     <title>Title</title>
 </head>
 <body>
-
-<div>
-    <table>
+<div class="banner">
+    <img src="banneri.png" alt="Banneri" align="center" width="100%">
+</div>
+<div class="content">
+<div style="width: 100%">
+    <table style="width: 100%">
         <tr><th>Käyttäjä</th><th>Viesti</th></tr>
         <tr th:each="viesti: ${viestit}" style="height: 15px;">
-          <td th:text="${viesti.kayttaja.nimimerkki}"></td><td th:text="${viesti.teksti}"></td>
+          <td th:text="${viesti.kayttaja.nimimerkki}"></td><td th:text="${viesti.teksti}" style="width: 85%"></td>
         </tr>
     </table>
 
 </div>
-
+    <br/>
+<div>Haluatko osallistua keskusteluun? Iske itsesi sisään foorumeillemme!</div>
+    <br/>
 <div id="divi2">
     <form action="#" th:action="@{/lisaaviesti}" th:object="${lisattava}" method="post">
         <div>Viesti:<br/> <input th:field="*{teksti}"/></div>
         <div><input th:type="submit" value="Viestitä"/></div>
     </form>
+</div>
 </div>
 </body>
 </html>

@@ -1,0 +1,15 @@
+.content {
+    width:60%;
+    background-color:#6abfa5;
+    margin: auto;
+    border: inset #343641;
+}
+
+.banner{
+    width:60%;
+    margin: auto;
+    border: outset #343641;
+}
+
+tr:nth-child(even) {background: #f6eeba}
+tr:nth-child(odd) {background: #6abfa5}
