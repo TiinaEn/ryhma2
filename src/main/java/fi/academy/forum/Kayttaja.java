@@ -15,6 +15,11 @@ public class Kayttaja {
     private String sahkoposti;
 
 
+    public Kayttaja(String nimimerkki, String salasana) {
+        this.nimimerkki = nimimerkki;
+        this.salasana = salasana;
+    }
+
     public Kayttaja() {
     }
 
