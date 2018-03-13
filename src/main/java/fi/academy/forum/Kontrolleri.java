@@ -27,6 +27,8 @@ public class Kontrolleri {
 
     @PostMapping("/lisaaviesti")
     public String lisaaViesti(@ModelAttribute Viesti viesti, Model model) {
+        Optional<Kayttaja> kirjautunut = krepo.findByNimimerkki(viesti.getKayttaja().getNimimerkki());
+        viesti.setKayttaja(kirjautunut.get());
         repo.save(viesti);
         model.addAttribute("viestit", repo.findAll());
         model.addAttribute("lisattava", new Viesti());
