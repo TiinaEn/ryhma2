@@ -11,6 +11,7 @@ import java.util.Optional;
 
 @Controller
 public class Kontrolleri {
+    Kayttaja kirjautunut;
 
     @Autowired
     private ViestiRepositorio repo;

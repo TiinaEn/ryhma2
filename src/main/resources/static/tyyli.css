@@ -1,0 +1,41 @@
+.content {
+    width:60%;
+    background-color:#6abfa5;
+    margin: auto;
+    border: inset #343641;
+}
+
+.banner{
+    width:60%;
+    margin: auto;
+    border: outset #343641;
+}
+
+tr:nth-child(even) {background: #f6eeba}
+tr:nth-child(odd) {background: #6abfa5}
+
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+    background-color: #111;
+}
