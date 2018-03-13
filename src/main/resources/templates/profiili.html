@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Profiili</title>
+</head>
+
+<body>
+<h2>Profiilitiedot</h2>
+<table>
+    <td th:object="${kayttaja}"></td>
+    <td th:text="*{nimimerkki}"></td>
+    <td th:text="*{salasana}"></td>
+</table>
+
+</body>
+</html>

@@ -5,10 +5,12 @@
     <title>Rekisteroidy</title>
 </head>
 <body>
+<h2>Rekisteröi uusi käyttäjä</h2>
+<form th:action="@{/profiili}" th:object="${kayttaja}" method="post">
 
-<form>
-    <h2>Rekisteröi uusi käyttäjä</h2>
-    <p>Nimimerkki<input th:></p>
+    <p>Nimimerkki: <input th:field="*{nimimerkki}"></p>
+    <p>Salasana: <input type="password" th:field="*{salasana}"></p>
+    <input type="submit" value="Tallenna">
 </form>
 
 </body>
