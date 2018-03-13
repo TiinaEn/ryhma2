@@ -14,6 +14,7 @@ public class Kayttaja {
     private String salasana;
     private String sahkoposti;
 
+
     public Kayttaja() {
     }
 

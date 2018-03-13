@@ -16,6 +16,12 @@ public class Viesti {
     private Integer laskuri;
     private String otsikko;
 
+    public Viesti(String teksti, Kayttaja kayttaja) {
+        this.teksti = teksti;
+        this.aikaleima = LocalDate.now();
+        this.kayttaja = kayttaja;
+    }
+
     public Viesti() {
     }
 
