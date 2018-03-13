@@ -10,7 +10,7 @@
     <table>
         <tr><th>Käyttäjä</th><th>Viesti</th></tr>
         <tr th:each="viesti: ${viestit}" style="height: 15px;">
-          <!-- <td th:text="${viesti.kayttaja.getNimimerkki()}"></td>--> <td th:text="${viesti.teksti}"></td>
+          <td th:text="${viesti.kayttaja.nimimerkki}"></td><td th:text="${viesti.teksti}"></td>
         </tr>
     </table>
 

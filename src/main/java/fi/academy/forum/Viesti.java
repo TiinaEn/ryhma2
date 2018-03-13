@@ -11,7 +11,7 @@ public class Viesti {
     private LocalDate aikaleima;
 
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(name="kayttaja")
     public Kayttaja kayttaja;
     private Integer laskuri;
     private String otsikko;
