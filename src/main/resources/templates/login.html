@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+
+<div id="divi2">
+    <form action="#" th:action="@{/kirjaudu}" th:object="${lisattava}" method="post">
+        <div>Käyttäjä:<br/> <input th:field="*{nimimerkki}"/></div>
+        <div>Salasana:<br/> <input th:field="*{salasana}"/></div>
+        <div><input th:type="submit" value="Kirjaudu sisään"/></div>
+    </form>
+</div>
+</body>
+</html>
