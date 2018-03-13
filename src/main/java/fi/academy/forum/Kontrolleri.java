@@ -32,7 +32,7 @@ public class Kontrolleri {
         viesti.setKayttaja(kirjautunut.get());
         repo.save(viesti);
         model.addAttribute("viestit", repo.findAll());
-        model.addAttribute("lisattava", new Viesti());
+        model.addAttribute("lisattava", new Viesti(kirjautunut.get()));
 
         return "index";
 
