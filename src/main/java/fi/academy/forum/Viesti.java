@@ -11,7 +11,7 @@ public class Viesti {
     private LocalDate aikaleima;
 
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(name="kayttaja")
     public Kayttaja kayttaja;
     private Integer laskuri;
     private String otsikko;
@@ -19,6 +19,10 @@ public class Viesti {
     public Viesti(String teksti, Kayttaja kayttaja) {
         this.teksti = teksti;
         this.aikaleima = LocalDate.now();
+        this.kayttaja = kayttaja;
+    }
+
+    public Viesti(Kayttaja kayttaja) {
         this.kayttaja = kayttaja;
     }
 

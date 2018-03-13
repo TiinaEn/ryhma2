@@ -7,11 +7,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.Optional;
+
 @Controller
 public class Kontrolleri {
 
     @Autowired
     private ViestiRepositorio repo;
+    private KayttajaRepositorio krepo;
 
     @GetMapping("/")
     public String listaaViestit (Model model) {
@@ -33,6 +36,7 @@ public class Kontrolleri {
 
     @GetMapping("/login")
     public String login (Model model) {
+
         model.addAttribute("lisattava", new Kayttaja());
         return "login";
     }
@@ -40,7 +44,8 @@ public class Kontrolleri {
 
     @PostMapping("/kirjaudu")
     public String kirjaudu(@ModelAttribute Kayttaja kayttaja, Model model) {
-        String kirjautunut = kayttaja.getNimimerkki();
+        Optional kirjautunut = krepo.findByNimimerkki(kayttaja.getNimimerkki());
+        if (kirjautunut.isPresent())
         model.addAttribute("kirjautunut", kirjautunut);
         model.addAttribute("lisattava", new Viesti());
 
