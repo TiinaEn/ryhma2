@@ -11,23 +11,23 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class Kontrolleri {
 
     @Autowired
-    private OppilasRepository repo;
+    private ViestiRepositorio repo;
 
     @GetMapping("/")
-    public String listaaOppilaat (Model model) {
+    public String listaaViestit (Model model) {
         model.addAttribute("viestit", repo.findAll());
-        model.addAttribute("dummy", new Oppilas());
+        model.addAttribute("lisattava", new Viesti());
         return "index";
     }
 
 
-    @PostMapping("/lisaaoppilas")
-    public String lisaaOppilas(@ModelAttribute Oppilas oppilas, Model model) {
-        repo.save(oppilas);
-        model.addAttribute("oppilaat", repo.findAll());
-        model.addAttribute("dummy", new Oppilas());
+    @PostMapping("/lisaaviesti")
+    public String lisaaViesti(@ModelAttribute Viesti viesti, Model model) {
+        repo.save(viesti);
+        model.addAttribute("viestit", repo.findAll());
+        model.addAttribute("lisattava", new Viesti());
 
-        return "oppilaat";
+        return "index";
 
     }
 

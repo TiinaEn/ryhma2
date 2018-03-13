@@ -1,10 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
 
+<div>
+    <table>
+        <tr><th>Käyttäjä</th><th>Viesti</th></tr>
+        <tr th:each="viesti: ${viestit}" style="height: 15px;">
+            <td th:text="${viesti.nimimerkki}"></td></td><td th:text="${viesti.teksti}"></td>
+        </tr>
+    </table>
+
+</div>
+
+<form th:action="@{/lisaaviesti}" method="post">
+    <tr><td><label th:text="'Viesti:'"/> <input th:type="text" th:object="lisattava" th:name="viesti"/></td>
+        <td><button type="submit" th:text="submit"></button></td></tr>
+</form>
 </body>
 </html>
