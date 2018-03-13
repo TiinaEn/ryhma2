@@ -31,6 +31,22 @@ public class Kontrolleri {
 
     }
 
+    @GetMapping("/login")
+    public String login (Model model) {
+        model.addAttribute("lisattava", new Kayttaja());
+        return "login";
+    }
+
+
+    @PostMapping("/kirjaudu")
+    public String kirjaudu(@ModelAttribute Kayttaja kayttaja, Model model) {
+        String kirjautunut = kayttaja.getNimimerkki();
+        model.addAttribute("kirjautunut", kirjautunut);
+        model.addAttribute("lisattava", new Viesti());
+
+        return "index";
+
+    }
 
 
 
