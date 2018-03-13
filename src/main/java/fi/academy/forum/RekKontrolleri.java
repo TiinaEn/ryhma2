@@ -29,6 +29,6 @@ public class RekKontrolleri {
             model.addAttribute("kayttaja", kayttaja);
             return "profiili";
         }
-        return "error";
+        return "varattu";
     }
 }
