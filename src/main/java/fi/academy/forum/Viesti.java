@@ -1,8 +1,6 @@
 package fi.academy.forum;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
@@ -11,7 +9,10 @@ public class Viesti {
     private Integer id;
     private String teksti;
     private LocalDate aikaleima;
-    private String nimimerkki;
+
+    @ManyToOne
+    @JoinColumn
+    public Kayttaja kayttaja;
     private Integer laskuri;
     private String otsikko;
 
@@ -42,13 +43,6 @@ public class Viesti {
         this.aikaleima = aikaleima;
     }
 
-    public String getNimimerkki() {
-        return nimimerkki;
-    }
-
-    public void setNimimerkki(String nimimerkki) {
-        this.nimimerkki = nimimerkki;
-    }
 
     public Integer getLaskuri() {
         return laskuri;
@@ -64,5 +58,13 @@ public class Viesti {
 
     public void setOtsikko(String otsikko) {
         this.otsikko = otsikko;
+    }
+
+    public Kayttaja getKayttaja() {
+        return kayttaja;
+    }
+
+    public void setKayttaja(Kayttaja kayttaja) {
+        this.kayttaja = kayttaja;
     }
 }
