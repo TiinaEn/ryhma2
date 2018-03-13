@@ -7,11 +7,15 @@
 
 <body>
 <h2>Profiilitiedot</h2>
-<table>
-    <td th:object="${kayttaja}"></td>
+<table th:object="${kayttaja}">
+
     <td th:text="*{nimimerkki}"></td>
     <td th:text="*{salasana}"></td>
+
+
 </table>
+<a th:href="@{/}">Siirry keskustelemaan</a>
+
 
 </body>
 </html>

@@ -24,6 +24,7 @@
     <br/>
 <div id="divi2">
     <form action="#" th:action="@{/lisaaviesti}" th:object="${lisattava}" method="post">
+        <div>Kayttaja:<br/> <input th:field="*{kayttaja.nimimerkki}"/></div>
         <div>Viesti:<br/> <input th:field="*{teksti}"/></div>
         <div><input th:type="submit" value="Viestitä"/></div>
     </form>
