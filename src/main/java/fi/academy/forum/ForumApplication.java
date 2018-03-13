@@ -16,6 +16,7 @@ public class ForumApplication {
 	CommandLineRunner luoKayttaja(KayttajaRepositorio krepo, ViestiRepositorio vrepo) {
 		return (args -> {
 			Kayttaja admin = new Kayttaja("admin", "admin");
+			admin.setAdminoikeus(1);
 			krepo.save(admin);
 			Kayttaja user = new Kayttaja("user", "user");
 			krepo.save(user);
