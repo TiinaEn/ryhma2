@@ -22,15 +22,17 @@
 <div style="width: 100%">
 
     <table style="width: 100%; border: solid black">
-        <tr style="border: solid black"><th>Käyttäjä</th><th>Viesti</th></tr>
+        <tr style="border: solid black"><th>Ajanhetki</th><th>Käyttäjä</th><th>Viesti</th></tr>
         <tr th:each="viesti: ${viestit}" style="height: 15px;">
-          <td th:text="${viesti.kayttaja.nimimerkki}"></td><td th:text="${viesti.teksti}" style="width: 85%"></td>
+            <td th:text="${viesti.aikaleima}"></td><td th:text="${viesti.kayttaja.nimimerkki}"></td><td th:text="${viesti.teksti}" style="width: 75%"></td>
         </tr>
     </table>
 
 </div>
     <br/>
+        <hr>
 <div>Haluatko osallistua keskusteluun? Iske itsesi sisään foorumeillemme!</div>
+        <hr>
     <br/>
 <div id="divi2">
     <form action="#" th:action="@{/lisaaviesti}" th:object="${lisattava}" method="post">
