@@ -1,17 +1,32 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <link rel="stylesheet" type="text/css" href="tyyli.css">
+
     <meta charset="UTF-8"/>
     <title>Title</title>
 </head>
 <body>
+<div class="banner">
+    <img src="banneri.png" alt="Banneri" align="center" width="100%">
+</div>
+<div class="content">
+    <div class="navi"><ul>
+        <li><a href="/login">login</a></li>
+        <li><a href="/rekisterointi">rekisteröinti</a></li>
+        <li><a href="/profiili">profiili</a></li>
+        <li><a href="/logout">Ulos!</a></li>
+    </ul></div>
+</div>
 
+<div class="content">
 <div id="divi2">
     <form action="#" th:action="@{/kirjaudu}" th:object="${lisattava}" method="post">
         <div>Käyttäjä:<br/> <input th:field="*{nimimerkki}"/></div>
         <div>Salasana:<br/> <input th:field="*{salasana}"/></div>
         <div><input th:type="submit" value="Kirjaudu sisään"/></div>
     </form>
+</div>
 </div>
 </body>
 </html>

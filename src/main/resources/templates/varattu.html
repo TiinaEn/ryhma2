@@ -1,14 +1,31 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
+    <link rel="stylesheet" type="text/css" href="tyyli.css">
+
     <meta charset="UTF-8"/>
     <title>Virhe</title>
 </head>
 
+
+
 <body>
+<div class="banner">
+    <img src="banneri.png" alt="Banneri" align="center" width="100%">
+</div>
+<div class="content">
+    <div class="navi"><ul>
+        <li><a href="/login">login</a></li>
+        <li><a href="/rekisterointi">rekisteröinti</a></li>
+        <li><a href="/profiili">profiili</a></li>
+        <li><a href="/logout">Ulos!</a></li>
+    </ul></div>
+</div>
+<div class="content">
 <h2>Nimimerkki varattu</h2>
 <form th:action="@{/rekisterointi}">
 <input type="submit" value="Rekisteröidy">
 </form>
+</div>
 </body>
 </html>
