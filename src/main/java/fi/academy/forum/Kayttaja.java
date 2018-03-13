@@ -13,11 +13,13 @@ public class Kayttaja {
     private Integer viestienMaara;
     private String salasana;
     private String sahkoposti;
+    private int adminoikeus;
 
 
     public Kayttaja(String nimimerkki, String salasana) {
         this.nimimerkki = nimimerkki;
         this.salasana = salasana;
+        this.adminoikeus = 0;
     }
 
     public Kayttaja() {
@@ -69,5 +71,13 @@ public class Kayttaja {
 
     public void setSahkoposti(String sahkoposti) {
         this.sahkoposti = sahkoposti;
+    }
+
+    public int getAdminoikeus() {
+        return adminoikeus;
+    }
+
+    public void setAdminoikeus(int adminoikeus) {
+        this.adminoikeus = adminoikeus;
     }
 }
