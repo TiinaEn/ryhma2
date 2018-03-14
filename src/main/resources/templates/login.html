@@ -13,10 +13,7 @@
 <div class="content">
     <div class="navi"><ul>
         <li><a href="/">Keskustelupalsta</a></li>
-        <li><a href="/login">login</a></li>
         <li><a href="/rekisterointi">rekisteröinti</a></li>
-        <li><a href="/profiili">profiili</a></li>
-        <li><a href="/logout">Ulos!</a></li>
     </ul></div>
 </div>
 
@@ -24,7 +21,7 @@
 <div id="divi2">
     <form action="#" th:action="@{/kirjaudu}" th:object="${lisattava}" method="post">
         <div>Käyttäjä:<br/> <input th:field="*{nimimerkki}"/></div>
-        <div>Salasana:<br/> <input th:field="*{salasana}"/></div>
+        <div>Salasana:<br/> <input type="password" th:field="*{salasana}"/></div>
         <div><input th:type="submit" value="Kirjaudu sisään"/></div>
     </form>
 </div>
