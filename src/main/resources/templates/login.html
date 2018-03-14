@@ -24,7 +24,7 @@
 <div id="divi2">
     <form action="#" th:action="@{/kirjaudu}" th:object="${lisattava}" method="post">
         <div>Käyttäjä:<br/> <input th:field="*{nimimerkki}"/></div>
-        <div>Salasana:<br/> <input th:field="*{salasana}"/></div>
+        <div>Salasana:<br/> <input type="password" th:field="*{salasana}"/></div>
         <div><input th:type="submit" value="Kirjaudu sisään"/></div>
     </form>
 </div>
