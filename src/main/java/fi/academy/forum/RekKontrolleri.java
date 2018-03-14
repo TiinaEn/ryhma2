@@ -23,7 +23,7 @@ public class RekKontrolleri {
     }
 
     @PostMapping ("/profiili")
-    public String tallennaTiedot (@ModelAttribute Kayttaja kayttaja, Model model) {
+    public String tallennaTiedot (Kayttaja kayttaja, Model model) {
         Optional<Kayttaja> optKayttaja = krepo.findByNimimerkki(kayttaja.getNimimerkki());
         if (!(optKayttaja.isPresent())) {
             krepo.save(kayttaja);
@@ -32,6 +32,7 @@ public class RekKontrolleri {
         }
         return "varattu";
     }
+
     @GetMapping("/muokkaaprofiilia")
     public String lomake(@RequestParam(name = "id") Integer id, Model model) {
         Optional<Kayttaja> optKaytt = krepo.findById(id);
@@ -51,6 +52,7 @@ public class RekKontrolleri {
             k.setId(kayttaja.getId());
             k.setNimimerkki(kayttaja.getNimimerkki());
             k.setNimi(kayttaja.getNimi());
+            k.setSahkoposti(kayttaja.getSahkoposti());
             k.setSalasana(kayttaja.getSalasana());
             krepo.save(k);
         }
