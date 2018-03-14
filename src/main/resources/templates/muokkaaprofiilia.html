@@ -8,7 +8,7 @@
 
 <form th:action="@{/muutatiedot}" th:method="POST" th:object="${kayttaja}">
     <input th:type="hidden" th:field="*{id}"/>
-
+    <input th:type="hidden" th:field="*{nimimerkki}"/>
     <p>Nimimerkki: <span th:text="*{nimimerkki}"></span></p>
     <p>Nimi: <input th:type="text" th:field="*{nimi}"/></p>
     <p>Sähköposti: <input th:type="text" th:field="*{sahkoposti}"/></p>
