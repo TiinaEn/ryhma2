@@ -64,7 +64,13 @@ public class Kontrolleri {
 
     @PostMapping("/kirjaudu")
     public String kirjaudu(Kayttaja kayttaja, Model model) {
+        if (kayttaja.getNimimerkki().isEmpty() || kayttaja.getSalasana().isEmpty()) {
+            model.addAttribute("viesti", "Syötä sekä nimimerkki että salasana!");
+            model.addAttribute("luku", 2);
+            return "varattu";
+        }
         Optional<Kayttaja> kirjautunut = krepo.findByNimimerkki(kayttaja.getNimimerkki());
+
         if (kirjautunut.isPresent()) {
             if (kirjautunut.get().getSalasana().equals(kayttaja.getSalasana())) {
 
@@ -72,13 +78,15 @@ public class Kontrolleri {
                 model.addAttribute("viestit", repo.findAll());
                 model.addAttribute("lisattava", new Viesti(kayttaja));
                 model.addAttribute("admin", kirjautunut.get().getAdminoikeus());// tee tl:n puolella: jos admin == 1 -> luo "poista" -napit viestien viereen. jos admin == 0 -> ei tehdä mitään.
-
                 return "index";
             }
-            return "varattu"; //"Väärä salasana";
+            model.addAttribute("viesti", "Väärä salasana!");
+            model.addAttribute("luku", 2);
+            return "varattu";
         }
-
-        return "varattu"; // "käyttäjää ei löydy";
+        model.addAttribute("viesti", "Käyttäjää ei löydy!");
+        model.addAttribute("luku", 2);
+        return "varattu";
     }
 
 

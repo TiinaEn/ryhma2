@@ -23,10 +23,20 @@
     </ul></div>
 </div>
 <div class="content">
-<h2>Nimimerkki varattu</h2>
-<form th:action="@{/rekisterointi}">
-<input type="submit" value="Rekisteröidy">
-</form>
+    <h2>Jokin meni pieleen ..</h2>
+    <p th:text="${viesti}"></p>
+
+    <div th:if="${luku} == 1">
+        <form th:action="@{/rekisterointi}">
+            <input type="submit" value="Rekisteröidy">
+        </form>
+    </div>
+
+    <div th:if="${luku} == 2">
+        <form th:action="@{/login}">
+            <input type="submit" value="Kirjaudu">
+        </form>
+    </div>
 </div>
 </body>
 </html>
