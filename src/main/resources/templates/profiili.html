@@ -23,25 +23,14 @@
 </div>
 <div class="content">
     <h2>Profiilitiedot</h2>
-    <table th:object="${kayttaja}">
-        <tr>
-            <th>Nimi</th>
-            <td th:text="*{nimi}"></td>
-        </tr>
-        <tr>
-            <th>Sähköposti</th>
-            <td th:text="*{sahkoposti}"></td>
-        </tr>
-        <tr>
-            <th>Nimimerkki</th>
-            <td th:text="*{nimimerkki}"></td>
-        </tr>
-        <!--<tr>-->
-        <!--<th>Salasana</th>-->
-        <!--<td th:text="*{salasana}"></td>-->
-        <!--</tr>-->
+    <div th:object="${kayttaja}">
         <a th:href="@{/muokkaaprofiilia}+'?id='+*{id}">Muokkaa tietoja</a>
-    </table>
+
+        <p>Nimimerkki: <span th:text="*{nimimerkki}"></span></p>
+        <p>Nimi: <span th:text="*{nimi}"></span></p>
+        <p>Sähköposti: <span th:text="*{sahkoposti}"></span></p>
+
+    </div>
     <a th:href="@{/login}">Siirry keskustelemaan</a>
 
 </div>

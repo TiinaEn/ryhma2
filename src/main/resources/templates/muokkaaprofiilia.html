@@ -6,7 +6,19 @@
     <title>Muokkaa</title>
 </head>
 <body>
-
+<div class="banner">
+    <img src="banneri.png" alt="Banneri" align="center" width="100%">
+</div>
+<div class="content">
+    <div class="navi"><ul>
+        <li><a href="/">Keskustelupalsta</a></li>
+        <li><a href="/login">login</a></li>
+        <li><a href="/rekisterointi">rekisteröinti</a></li>
+        <li><a href="/profiili">profiili</a></li>
+        <li><a href="/logout">Ulos!</a></li>
+    </ul></div>
+</div>
+<div class="content">
 <form th:action="@{/muutatiedot}" th:method="POST" th:object="${kayttaja}">
     <input th:type="hidden" th:field="*{id}"/>
     <input th:type="hidden" th:field="*{nimimerkki}"/>
@@ -16,6 +28,6 @@
     <p>Salasana: <input type="password" th:type="text" th:field="*{salasana}"/></p>
     <p><input th:type="submit"/></p>
 </form>
-
+</div>
 </body>
 </html>
