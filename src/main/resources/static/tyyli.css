@@ -4,25 +4,33 @@ body {
     background-attachment: fixed;
     background-position: center;
     background-size:100%;
+    color: #343641;
 }
 
-div {
-    border-radius: 15px;
+button {
+    border-radius: 10px;
 }
+
+input[type=text] {
+    border-radius: 4px;
+}
+
 .content {
+    padding: 2px;
     width:60%;
-    height: 95%;
-    background-color:#6abfa5;
+    height:95vh;
+    background-color:#f6eeba;
     margin: auto;
     box-shadow: 5px 10px #888888;
 }
 
 .navi {
+
+    margin:10px;
     width:60%;
     height: 95%;
-    background-color:#6abfa5;
     margin: auto;
-    border-radius: 15px;
+    border-radius: 10px;
 }
 
 .banner{
@@ -35,36 +43,48 @@ tr:nth-child(even) {background: #f6eeba}
 tr:nth-child(odd) {background: #6abfa5}
 
  table {
-     border-radius: 15px;
+     border-radius: 10px;
  }
-
+.puhdastd {
+    background: #f6eeba
+}
 tr {
-    border-radius: 15px;
+    border-radius: 5px;
 }
 td {
     border-radius: 5px;
 }
 th {
-    border-radius: 15px;
+    border-radius: 5px;
 }
 
+.namiska {
+    background-color: #6abfa5;
+    box-shadow: 1px 2px #888888;
+    border-radius: 4px;
+
+}
+h2 {
+    color:#343641;
+    shadow: 2px 5px #888888;
+}
 ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #333;
-    border-radius: 15px;
+    background-color: #343641;
+    border-radius: 10px;
     box-shadow: 5px 10px #888888;
 }
 
 li {
     float: left;
-    border-radius: 15px;
+    border-radius: 10px;
 }
 
 li a {
-    border-radius: 15px;
+    border-radius: 10px;
     display: block;
     color: white;
     text-align: center;
@@ -74,10 +94,16 @@ li a {
 
 /* Change the link color to #111 (black) on hover */
 li a:hover {
-    border-radius: 15px;
-    background-color: #111;
+    border-radius: 10px;
+    background-color: #6abfa5;
+    color:#343641;
 }
 
+.viivoitus {
+    border-top: solid #343641;
+    border-bottom: solid #343641;
+    padding-bottom: 5px;
+}
 .vastauslaatikko {
     display: none;
 }
