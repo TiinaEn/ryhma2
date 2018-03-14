@@ -37,6 +37,7 @@ public class Kontrolleri {
         return "index";
 
     }
+    
 
     @GetMapping("/login")
     public String login (Model model) {
@@ -57,6 +58,8 @@ public class Kontrolleri {
         return "index";
 
     }
+
+
 
     @GetMapping("/poista")
     public String poistaViesti(int id, Model model) {
