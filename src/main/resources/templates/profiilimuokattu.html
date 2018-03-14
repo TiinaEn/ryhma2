@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" type="text/css" href="tyyli.css">
+
+    <meta charset="UTF-8"/>
+    <title>Profiili</title>
+</head>
+
+
+<body>
+<div class="banner">
+    <img src="banneri.png" alt="Banneri" align="center" width="100%">
+</div>
+<div class="content">
+    <div class="navi"><ul>
+        <li><a href="/login">login</a></li>
+        <li><a href="/rekisterointi">rekisteröinti</a></li>
+        <li><a href="/profiili">profiili</a></li>
+        <li><a href="/logout">Ulos!</a></li>
+    </ul></div>
+</div>
+<div class="content">
+    <h2>Profiilitiedot</h2>
+    <table th:object="${optkayttaja}">
+        <tr>
+            <th>Nimi</th>
+            <td th:text="*{nimi}"></td>
+        </tr>
+        <tr>
+            <th>Sähköposti</th>
+            <td th:text="*{sahkoposti}"></td>
+        </tr>
+        <tr>
+            <th>Nimimerkki</th>
+            <td th:text="*{nimimerkki}"></td>
+        </tr>
+        <!--<tr>-->
+        <!--<th>Salasana</th>-->
+        <!--<td th:text="*{salasana}"></td>-->
+        <!--</tr>-->
+        <a th:href="@{/muokkaaprofiilia}+'?id='+*{id}">Muokkaa tietoja</a>
+    </table>
+    <a th:href="@{/login}">Siirry keskustelemaan</a>
+
+</div>
+
+</body>
+</html>

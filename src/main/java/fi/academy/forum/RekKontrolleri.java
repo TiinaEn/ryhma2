@@ -54,7 +54,7 @@ public class RekKontrolleri {
             k.setSalasana(kayttaja.getSalasana());
             krepo.save(k);
         }
-        model.addAttribute("kayttaja", k);
-        return "profiili";
+        model.addAttribute("optkayttaja", k);
+        return "profiilimuokattu";
     }
 }
