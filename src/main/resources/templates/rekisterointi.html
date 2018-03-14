@@ -10,22 +10,22 @@
 <div class="banner">
     <img src="banneri.png" alt="Banneri" align="center" width="100%">
 </div>
-<div class="content">
+
     <div class="navi"><ul>
         <li><a href="/">Keskustelupalsta</a></li>
         <li><a href="/login">login</a></li>
-        <li><a href="/rekisterointi">rekisteröinti</a></li>
-        <li><a href="/profiili">profiili</a></li>
-        <li><a href="/logout">Ulos!</a></li>
     </ul></div>
-</div>
+
 <div class="content">
 <h2>Rekisteröi uusi käyttäjä</h2>
 <form th:action="@{/profiili}" th:object="${kayttaja}" method="post">
+<div>Käyttäjätunnus:<br/> <input th:field="*{nimimerkki}"></div>
 
-    <p>Nimimerkki: <input th:field="*{nimimerkki}"></p>
-    <p>Salasana: <input type="password" th:field="*{salasana}"></p>
-    <input type="submit" value="Tallenna">
+
+    <div>Salasana:<br/><input type="password" th:field="*{salasana}"></div>
+
+<input type="submit" value="Rekisteröidy">
+
 </form>
 </div>
 </body>

@@ -9,7 +9,7 @@
 <div class="banner">
     <img src="banneri.png" alt="Banneri" align="center" width="100%">
 </div>
-<div class="content">
+
     <div class="navi"><ul>
         <li><a href="/">Keskustelupalsta</a></li>
         <li><a href="/login">login</a></li>
@@ -17,7 +17,7 @@
         <li><a href="/profiili">profiili</a></li>
         <li><a href="/logout">Ulos!</a></li>
     </ul></div>
-</div>
+
 <div class="content">
 <form th:action="@{/muutatiedot}" th:method="POST" th:object="${kayttaja}">
     <input th:type="hidden" th:field="*{id}"/>

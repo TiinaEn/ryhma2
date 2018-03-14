@@ -4,12 +4,24 @@ body {
     background-attachment: fixed;
     background-position: center;
     background-size:100%;
+    color: #343641;
 }
 
-div {
-    border-radius: 15px;
+.rekis {
+background: #6abfa5;
+    border-radius: 0px;
+
 }
+div {
+    border-radius: 10px;
+}
+
+button {
+    border-radius: 10px;
+}
+
 .content {
+    padding: 2px;
     width:60%;
     height: 95%;
     background-color:#6abfa5;
@@ -18,11 +30,11 @@ div {
 }
 
 .navi {
+    padding:2px;
     width:60%;
     height: 95%;
-    background-color:#6abfa5;
     margin: auto;
-    border-radius: 15px;
+    border-radius: 10px;
 }
 
 .banner{
@@ -35,36 +47,39 @@ tr:nth-child(even) {background: #f6eeba}
 tr:nth-child(odd) {background: #6abfa5}
 
  table {
-     border-radius: 15px;
+     border-radius: 10px;
  }
 
 tr {
-    border-radius: 15px;
+    border-radius: 10px;
 }
 td {
     border-radius: 5px;
 }
 th {
-    border-radius: 15px;
+    border-radius: 10px;
 }
 
+h2 {
+    color:#343641;
+}
 ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #333;
-    border-radius: 15px;
+    background-color: #343641;
+    border-radius: 10px;
     box-shadow: 5px 10px #888888;
 }
 
 li {
     float: left;
-    border-radius: 15px;
+    border-radius: 10px;
 }
 
 li a {
-    border-radius: 15px;
+    border-radius: 10px;
     display: block;
     color: white;
     text-align: center;
@@ -74,8 +89,9 @@ li a {
 
 /* Change the link color to #111 (black) on hover */
 li a:hover {
-    border-radius: 15px;
-    background-color: #111;
+    border-radius: 10px;
+    background-color: #f6eeba;
+    color:#343641;
 }
 
 .vastauslaatikko {
