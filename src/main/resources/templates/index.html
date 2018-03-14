@@ -23,11 +23,19 @@
 
 <div class="content">
     <div class="navi"><ul>
+
         <li><a href="/">Keskustelupalsta</a></li>
-        <li><a href="/login">login</a></li>
-        <li><a href="/rekisterointi">rekisteröinti</a></li>
         <li><a href="/profiili">profiili</a></li>
+        <span th:if="${admin == null}">
+        <li><a href="/login">login</a></li>
+        </span>
+        <span th:unless="${admin == null}">
         <li><a href="/logout">Ulos!</a></li>
+        </span>
+        <span th:if="${admin == null}">
+        <li><a href="/rekisterointi">rekisteröinti</a></li>
+        </span>
+
     </ul></div>
 </div>
     <div class="content">
@@ -39,14 +47,25 @@
 
             <form action="#" th:action="@{/reply}" th:object="${lisattava}" method="post">
                 <td th:text="${viesti.aikaleima}"></td><td th:text="${viesti.kayttaja.nimimerkki}"></td><td style="display:none" th:text="${viesti.id}"></td><td th:text="${viesti.teksti}" style="width: 55%">
-                <td><div onclick="toggleReplyVisibility(event)">Vastaa
-                <div class="vastauslaatikko">
-                    <input style="display:none" th:name="vastattuviesti.id" th:value="${viesti.id}"/>
-                    <input style="display:none" th:field="*{kayttaja.nimimerkki}"/>
-                    <input th:field="*{teksti}" />
-                    <input th:type="submit" value="Lähetä"/>
-                </div></div>
-            </td>
+                <td th:if="${admin != null}">
+                    <div onclick="toggleReplyVisibility(event)">Vastaa
+                        <div class="vastauslaatikko">
+                            <input style="display:none" th:name="vastattuviesti.id" th:value="${viesti.id}"/>
+                            <input style="display:none" th:field="*{kayttaja.nimimerkki}"/>
+                            <input th:field="*{teksti}" />
+                            <input th:type="submit" value="Lähetä"/>
+                        </div></div>
+                </td>
+                <td th:unless="${admin != null}">
+                    <div style="display: none" onclick="toggleReplyVisibility(event)">Vastaa
+                        <div class="vastauslaatikko">
+                            <input style="display:none" th:name="vastattuviesti.id" th:value="${viesti.id}"/>
+                            <input style="display:none" th:field="*{kayttaja.nimimerkki}"/>
+                            <input th:field="*{teksti}" />
+                            <input th:type="submit" value="Lähetä"/>
+                        </div></div>
+                </td>
+
 
             </form>
             <form action="#" th:action="@{/poista}" method="post">
@@ -61,7 +80,7 @@
 
 </div>
     <br/>
-<div>*Haluatko osallistua keskusteluun? <a href="/login">Kirjaudu sisään!</a>*</div>
+<div th:if="${admin == null}">*Haluatko osallistua keskusteluun? <a href="/login">Kirjaudu sisään!</a>*</div>
 <div id="divi2">
     <span th:if="${admin != null}">
     <form action="#" th:action="@{/lisaaviesti}" th:object="${lisattava}" method="post">
