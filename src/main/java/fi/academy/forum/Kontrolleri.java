@@ -98,6 +98,13 @@ public class Kontrolleri {
         return "index";
     }
 
+    @GetMapping("/logout")
+    public String logout (Model model) {
+
+        //model.addAttribute("lisattava", new Kayttaja());
+        return "redirect:";
+    }
+
 
 
 }
