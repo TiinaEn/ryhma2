@@ -53,7 +53,10 @@
         <tr th:each="viesti: ${viestit}" style="height: 15px;">
 
             <form action="#" th:action="@{/reply}" th:object="${lisattava}" method="post">
-                <td th:text="${viesti.aikaleima}"></td><td th:text="${viesti.kayttaja.nimimerkki}"></td><td style="display:none" th:text="${viesti.id}"></td><td th:text="${viesti.teksti}" style="width: 55%">
+                <td th:text="${viesti.aikaleima}"></td>
+                <td><a th:href="@{/kayttaja}+'?id='+${viesti.kayttaja.id}" style="text-decoration: none" th:text="${viesti.kayttaja.nimimerkki}"/></td>
+                <td style="display:none" th:text="${viesti.id}"></td>
+                <td th:text="${viesti.teksti}" style="width: 55%">
                 <td th:if="${admin != null}" class="puhdastd">
                     <div onclick="toggleReplyVisibility(event)">Vastaa
                         <div class="vastauslaatikko">

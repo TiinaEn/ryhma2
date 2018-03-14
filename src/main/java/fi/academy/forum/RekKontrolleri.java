@@ -70,4 +70,16 @@ public class RekKontrolleri {
         model.addAttribute("optkayttaja", k);
         return "profiilimuokattu";
     }
+    
+    @GetMapping("/kayttaja")
+    public String muuta(@RequestParam(name = "id") Integer id, Model model) {
+        Optional<Kayttaja> optKaytt = krepo.findById(id);
+        if (optKaytt.isPresent()) {
+            model.addAttribute("optkayttaja", optKaytt);
+            return "profiilimuokattu";
+        }
+        model.addAttribute("viesti", "Profiilitietoja ei löydy!");
+        model.addAttribute("luku", 0);
+        return "varattu";
+    }
 }
