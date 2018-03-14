@@ -19,13 +19,14 @@
 <div class="content">
 <h2>Rekisteröi uusi käyttäjä</h2>
 <form th:action="@{/profiili}" th:object="${kayttaja}" method="post">
+    <div class="viivoitus">
 <div>Käyttäjätunnus:<br/> <input th:field="*{nimimerkki}"></div>
 
 
     <div>Salasana:<br/><input type="password" th:field="*{salasana}"></div>
 
-<input type="submit" value="Rekisteröidy" class="namiska">
-
+<input type="submit" value="Rekisteröidy" class="namiska" style="padding-top:2px;"/>
+    </div>
 </form>
 </div>
 </body>

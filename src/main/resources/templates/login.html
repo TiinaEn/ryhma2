@@ -19,11 +19,11 @@
 
 <div class="content">
     <h2>Kirjaudu sisään!</h2>
-<div id="divi2">
+<div id="divi2" class="viivoitus">
     <form action="#" th:action="@{/kirjaudu}" th:object="${lisattava}" method="post">
         <div>Käyttäjätunnus:<br/> <input th:field="*{nimimerkki}"/></div>
         <div>Salasana:<br/> <input type="password" th:field="*{salasana}"/></div>
-        <div><input th:type="submit" value="Kirjaudu sisään" class="namiska"/></div>
+        <div><input th:type="submit" value="Kirjaudu sisään" class="namiska" style="padding-top:2px;"/></div>
     </form>
 </div>
 </div>
