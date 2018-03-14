@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -25,11 +24,19 @@ public class RekKontrolleri {
     @PostMapping ("/profiili")
     public String tallennaTiedot (Kayttaja kayttaja, Model model) {
         Optional<Kayttaja> optKayttaja = krepo.findByNimimerkki(kayttaja.getNimimerkki());
+
         if (!(optKayttaja.isPresent())) {
+            if (kayttaja.getNimimerkki().isEmpty() || kayttaja.getSalasana().isEmpty()) {
+                model.addAttribute("viesti", "Anna sekä nimimerkki että salasana!");
+                model.addAttribute("luku", 1);
+                return "varattu";
+            }
             krepo.save(kayttaja);
             model.addAttribute("kayttaja", kayttaja);
             return "profiili";
         }
+        model.addAttribute("viesti", "Nimimerkki on jo käytössä!");
+        model.addAttribute("luku", 1);
         return "varattu";
     }
 
@@ -40,7 +47,9 @@ public class RekKontrolleri {
             model.addAttribute("kayttaja", optKaytt.get());
             return "muokkaaprofiilia";
         }
-        throw new RuntimeException("Virhe");
+        model.addAttribute("viesti", "Profiilitietoja ei löydy!");
+        model.addAttribute("luku", 0);
+        return "varattu";
     }
 
     @PostMapping("/muutatiedot")
@@ -53,7 +62,9 @@ public class RekKontrolleri {
             k.setNimimerkki(kayttaja.getNimimerkki());
             k.setNimi(kayttaja.getNimi());
             k.setSahkoposti(kayttaja.getSahkoposti());
-            k.setSalasana(kayttaja.getSalasana());
+
+            if (!(kayttaja.getSalasana().isEmpty()))
+                k.setSalasana(kayttaja.getSalasana());
             krepo.save(k);
         }
         model.addAttribute("optkayttaja", k);
