@@ -44,7 +44,7 @@ public class Kontrolleri {
         Optional<Kayttaja> kirjautunut = krepo.findByNimimerkki(viesti.getKayttaja().getNimimerkki());
         viesti.setKayttaja(kirjautunut.get());
         Viesti vastattu = repo.findById(viesti.getVastattuviesti().getId()).get();
-        viesti.setTeksti("|| käyttäjä: " + vastattu.getKayttaja().getNimimerkki() + " sanoi: '" + vastattu.getTeksti() + "' || " + viesti.getTeksti() );
+        viesti.setTeksti("|| " + vastattu.getKayttaja().getNimimerkki() + ": '" + vastattu.getTeksti() + "' || " + viesti.getTeksti() );
         repo.save(viesti);
         model.addAttribute("viestit", repo.findAll());
         model.addAttribute("lisattava", new Viesti(kirjautunut.get()));

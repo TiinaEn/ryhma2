@@ -34,15 +34,15 @@
 <div style="width: 100%">
 
     <table style="width: 100%; border: solid black">
-        <tr style="border: solid black"><th>Ajanhetki</th><th>Käyttäjä</th><th>Viesti</th></tr>
+        <tr style="border: solid black"><th>Ajanhetki</th><th>Käyttäjä</th><th>Viesti</th><th>Toiminnallisuus</th></tr>
         <tr th:each="viesti: ${viestit}" style="height: 15px;">
 
             <form action="#" th:action="@{/reply}" th:object="${lisattava}" method="post">
-                <td th:text="${viesti.aikaleima}"></td><td th:text="${viesti.kayttaja.nimimerkki}"></td><td style="display:none" th:text="${viesti.id}"></td><td th:text="${viesti.teksti}" style="width: 70%">
+                <td th:text="${viesti.aikaleima}"></td><td th:text="${viesti.kayttaja.nimimerkki}"></td><td style="display:none" th:text="${viesti.id}"></td><td th:text="${viesti.teksti}" style="width: 55%">
                 <td><div onclick="toggleReplyVisibility(event)">Vastaa
                 <div class="vastauslaatikko">
-                    <input th:name="vastattuviesti.id" th:value="${viesti.id}"/>
-                    <input th:field="*{kayttaja.nimimerkki}"/>
+                    <input style="display:none" th:name="vastattuviesti.id" th:value="${viesti.id}"/>
+                    <input style="display:none" th:field="*{kayttaja.nimimerkki}"/>
                     <input th:field="*{teksti}" />
                     <input th:type="submit" value="Lähetä"/>
                 </div></div>
@@ -61,10 +61,7 @@
 
 </div>
     <br/>
-        <hr>
-<div>Haluatko osallistua keskusteluun? Iske itsesi sisään foorumeillemme!</div>
-        <hr>
-    <br/>
+<div>*Haluatko osallistua keskusteluun? <a href="/login">Kirjaudu sisään!</a>*</div>
 <div id="divi2">
     <span th:if="${admin != null}">
     <form action="#" th:action="@{/lisaaviesti}" th:object="${lisattava}" method="post">
