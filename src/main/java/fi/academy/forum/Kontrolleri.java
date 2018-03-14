@@ -52,7 +52,7 @@ public class Kontrolleri {
         model.addAttribute("kirjautunut", kirjautunut.get());
         model.addAttribute("viestit", repo.findAll());
         model.addAttribute("lisattava", new Viesti(kayttaja));
-        //model.addAttribute("admin", kirjautunut.get().getAdminoikeus());// tee tl:n puolella: jos admin == 1 -> luo "poista" -napit viestien viereen. jos admin == 0 -> ei tehdä mitään.
+        model.addAttribute("admin", kirjautunut.get().getAdminoikeus());// tee tl:n puolella: jos admin == 1 -> luo "poista" -napit viestien viereen. jos admin == 0 -> ei tehdä mitään.
 
         return "index";
 
