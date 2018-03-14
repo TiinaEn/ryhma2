@@ -4,6 +4,17 @@
     <link rel="stylesheet" type="text/css" href="tyyli.css">
     <meta charset="UTF-8"/>
     <title>Title</title>
+    <script>
+        function toggleReplyVisibility(event) {
+            var stopsToggle = event.target.firstElementChild;
+            if (stopsToggle.style.display === "none") {
+                stopsToggle.style.display = "block";
+            } else {
+                stopsToggle.style.display = "none";
+            }
+        }
+    </script>
+
 </head>
 <body>
 <div class="banner">
@@ -24,7 +35,18 @@
     <table style="width: 100%; border: solid black">
         <tr style="border: solid black"><th>Ajanhetki</th><th>Käyttäjä</th><th>Viesti</th></tr>
         <tr th:each="viesti: ${viestit}" style="height: 15px;">
-            <td th:text="${viesti.aikaleima}"></td><td th:text="${viesti.kayttaja.nimimerkki}"></td><td th:text="${viesti.teksti}" style="width: 75%"><td><a href="/reply">reply</a></td>
+            <form action="#" th:action="@{/reply}" th:object="${lisattava}" method="post">
+            <td th:text="${viesti.aikaleima}"></td><td th:text="${viesti.kayttaja.nimimerkki}"></td><td th:text="${viesti.teksti}" style="width: 70%">
+                <td><div onclick="toggleReplyVisibility(event)">Vastaa
+                <div class="vastauslaatikko">
+                    <input th:field="*{teksti}" />
+                    <input th:type="submit" value="Lähetä"/>
+                </div></div>
+            </td>
+
+            </form>
+
+
         </tr>
     </table>
 
