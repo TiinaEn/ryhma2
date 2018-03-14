@@ -52,6 +52,8 @@
                 <input th:type="hidden" th:name="kayttaja.nimimerkki" th:value="${viesti.kayttaja.nimimerkki}"/>
                 <input th:type="hidden" th:name="id" th:value="${viesti.id}"/>
                 <td th:if="${admin == 1}==true"><div><input th:type="submit" value="Poista"/></div></td>
+                <td th:if="${lisattava.kayttaja.nimimerkki == viesti.kayttaja.nimimerkki}==true"><div><input th:type="submit" value="Poista"/></div></td>
+
             </form>
         </tr>
     </table>
