@@ -58,6 +58,15 @@ public class Kontrolleri {
 
     }
 
+    @GetMapping("/poista")
+    public String poistaViesti(int id, Model model) {
+        repo.deleteById(id);
+
+
+
+        return "redirect:";
+    }
+
 
 
 }
