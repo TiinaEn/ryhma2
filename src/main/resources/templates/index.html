@@ -18,10 +18,10 @@
 </head>
 <body>
 <div class="banner">
-    <img src="banneri.png" alt="Banneri" align="center" width="100%">
+    <img src="banneri.png" alt="Banneri" align="center" width="100%" style="border-radius:15px">
 </div>
 
-<div class="content">
+
     <div class="navi"><ul>
         <li><a href="/">Keskustelupalsta</a></li>
         <li><a href="/login">login</a></li>
@@ -29,12 +29,11 @@
         <li><a href="/profiili">profiili</a></li>
         <li><a href="/logout">Ulos!</a></li>
     </ul></div>
-</div>
     <div class="content">
 <div style="width: 100%">
 
-    <table style="width: 100%; border: solid black">
-        <tr style="border: solid black"><th>Ajanhetki</th><th>Käyttäjä</th><th>Viesti</th><th>Toiminnallisuus</th></tr>
+    <table style="width: 100%; border-bottom: solid black">
+        <tr style="border: solid black; width:100%;"><th>Ajanhetki</th><th>Käyttäjä</th><th>Viesti</th><th>Toiminnallisuus</th></tr>
         <tr th:each="viesti: ${viestit}" style="height: 15px;">
 
             <form action="#" th:action="@{/reply}" th:object="${lisattava}" method="post">
@@ -66,8 +65,8 @@
     <span th:if="${admin != null}">
     <form action="#" th:action="@{/lisaaviesti}" th:object="${lisattava}" method="post">
         <div><input th:type="hidden" th:field="*{kayttaja.nimimerkki}"/></div>
-        <div>Viesti:<br/> <input th:field="*{teksti}"/></div>
-        <div><input th:type="submit" value="Viestitä"/></div>
+        <div><input th:field="*{teksti}" style="width:98%; margin-left:2px; margin-bottom:2px;"/></div>
+        <div><input th:type="submit" value="Viestitä" style="margin-left:2px"/></div>
     </form>
     </span>
 </div>

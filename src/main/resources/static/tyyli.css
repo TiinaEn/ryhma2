@@ -6,22 +6,47 @@ body {
     background-size:100%;
 }
 
+div {
+    border-radius: 15px;
+}
 .content {
     width:60%;
+    height: 95%;
     background-color:#6abfa5;
     margin: auto;
-    border: inset #343641;
+    box-shadow: 5px 10px #888888;
+}
+
+.navi {
+    width:60%;
+    height: 95%;
+    background-color:#6abfa5;
+    margin: auto;
+    border-radius: 15px;
 }
 
 .banner{
     width:60%;
     margin: auto;
-    border: outset #343641;
+    box-shadow: 5px 10px #888888;
 }
 
 tr:nth-child(even) {background: #f6eeba}
 tr:nth-child(odd) {background: #6abfa5}
 
+ table {
+     border-radius: 15px;
+ }
+
+tr {
+    border-radius: 15px;
+}
+td {
+    border-radius: 5px;
+}
+th {
+    border-radius: 15px;
+}
 
 ul {
     list-style-type: none;
@@ -29,13 +54,17 @@ ul {
     padding: 0;
     overflow: hidden;
     background-color: #333;
+    border-radius: 15px;
+    box-shadow: 5px 10px #888888;
 }
 
 li {
     float: left;
+    border-radius: 15px;
 }
 
 li a {
+    border-radius: 15px;
     display: block;
     color: white;
     text-align: center;
@@ -45,6 +74,7 @@ li a {
 
 /* Change the link color to #111 (black) on hover */
 li a:hover {
+    border-radius: 15px;
     background-color: #111;
 }
 
