@@ -36,7 +36,7 @@
         <tr style="border: solid black"><th>Ajanhetki</th><th>Käyttäjä</th><th>Viesti</th></tr>
         <tr th:each="viesti: ${viestit}" style="height: 15px;">
             <form action="#" th:action="@{/reply}" th:object="${lisattava}" method="post">
-            <td th:text="${viesti.aikaleima}"></td><td th:text="${viesti.kayttaja.nimimerkki}"></td><td th:text="${viesti.teksti}" style="width: 70%">
+                <td th:if="${admin == 1}==true"><a th:href="'/poista?id='+ ${viesti.id}">poista</a></td><td th:text="${viesti.aikaleima}"></td><td th:text="${viesti.kayttaja.nimimerkki}"></td><td style="display:none" th:text="${viesti.id}"></td><td th:text="${viesti.teksti}" style="width: 70%">
                 <td><div onclick="toggleReplyVisibility(event)">Vastaa
                 <div class="vastauslaatikko">
                     <input th:field="*{teksti}" />
@@ -45,8 +45,6 @@
             </td>
 
             </form>
-
-
         </tr>
     </table>
 
