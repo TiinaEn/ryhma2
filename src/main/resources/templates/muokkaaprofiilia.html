@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Muokkaa</title>
+</head>
+<body>
+
+<form th:action="@{/profiili}" th:method="POST" th:object="${kayttaja}">
+    <input th:type="hidden" th:field="*{id}"/>
+    <input th:type="hidden" th:field="*{nimimerkki}"/>
+    <p>Nimimerkki: <span th:text="*{nimimerkki}"></span></p>
+    <p>Nimi: <input th:type="text" th:field="*{nimi}"/></p>
+    <p>Sähköposti: <input th:type="text" th:field="*{sahkoposti}"/></p>
+    <p>Salasana: <input type="password" th:type="text" th:field="*{salasana}"/></p>
+    <p><input th:type="submit"/></p>
+</form>
+
+</body>
+</html>

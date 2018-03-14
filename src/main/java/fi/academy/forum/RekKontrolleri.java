@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Optional;
 
@@ -30,5 +31,30 @@ public class RekKontrolleri {
             return "profiili";
         }
         return "varattu";
+    }
+    @GetMapping("/muokkaaprofiilia")
+    public String lomake(@RequestParam(name = "id") Integer id, Model model) {
+        Optional<Kayttaja> optKaytt = krepo.findById(id);
+        if (optKaytt.isPresent()) {
+            model.addAttribute("kayttaja", optKaytt.get());
+            return "muokkaaprofiilia";
+        }
+        throw new RuntimeException("Virhe");
+    }
+
+    @PostMapping("/muutatiedot")
+    public String muutatietoja(Kayttaja kayttaja, Model model) {
+        Optional<Kayttaja> kaytt = krepo.findById(kayttaja.getId());
+        Kayttaja k = kaytt.get();
+
+        if(kaytt.isPresent()) {
+            k.setId(kayttaja.getId());
+            k.setNimimerkki(kayttaja.getNimimerkki());
+            k.setNimi(kayttaja.getNimi());
+            k.setSalasana(kayttaja.getSalasana());
+            krepo.save(k);
+        }
+        model.addAttribute("kayttaja", k);
+        return "profiili";
     }
 }
