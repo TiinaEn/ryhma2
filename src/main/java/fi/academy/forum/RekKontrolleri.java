@@ -57,6 +57,6 @@ public class RekKontrolleri {
             krepo.save(k);
         }
         model.addAttribute("optkayttaja", k);
-        return "profiiliafter";
+        return "profiilimuokattu";
     }
 }

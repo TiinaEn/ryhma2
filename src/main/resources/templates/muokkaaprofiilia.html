@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
+    <link rel="stylesheet" type="text/css" href="tyyli.css">
     <meta charset="UTF-8"/>
     <title>Muokkaa</title>
 </head>
@@ -11,7 +12,7 @@
     <input th:type="hidden" th:field="*{nimimerkki}"/>
     <p>Nimimerkki: <span th:text="*{nimimerkki}"></span></p>
     <p>Nimi: <input th:type="text" th:field="*{nimi}"/></p>
-    <p>Sähköposti: <input th:type="text" th:field="*{sahkoposti}"/></p>
+    <p>Sähköposti: <input th:type="email" th:field="*{sahkoposti}"/></p>
     <p>Salasana: <input type="password" th:type="text" th:field="*{salasana}"/></p>
     <p><input th:type="submit"/></p>
 </form>
