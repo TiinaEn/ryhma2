@@ -33,6 +33,7 @@ public class Kontrolleri {
         repo.save(viesti);
         model.addAttribute("viestit", repo.findAll());
         model.addAttribute("lisattava", new Viesti(kirjautunut.get()));
+        model.addAttribute("admin", kirjautunut.get().getAdminoikeus());
 
         return "index";
 
@@ -61,13 +62,22 @@ public class Kontrolleri {
 
 
 
-    @GetMapping("/poista")
-    public String poistaViesti(int id, Model model) {
-        repo.deleteById(id);
+    @PostMapping("/poista")
+    public String poistaViesti(Viesti viesti, Model model) {
+//        System.out.println(id);
+
+        Optional<Kayttaja> kirjautunut = krepo.findByNimimerkki(viesti.getKayttaja().getNimimerkki());
+        viesti.setKayttaja(kirjautunut.get());
+        System.out.println("!!!!!!" + viesti.getId());
+        repo.deleteById(viesti.getId());
+        model.addAttribute("viestit", repo.findAll());
+        model.addAttribute("lisattava", new Viesti(kirjautunut.get()));
+        model.addAttribute("kirjautunut", kirjautunut.get());
+        model.addAttribute("admin", kirjautunut.get().getAdminoikeus());
 
 
 
-        return "redirect:";
+        return "index";
     }
 
 
