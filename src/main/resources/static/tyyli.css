@@ -1,3 +1,11 @@
+body {
+    background-image: url("background.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size:100%;
+}
+
 .content {
     width:60%;
     background-color:#6abfa5;
