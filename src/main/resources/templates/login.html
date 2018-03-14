@@ -23,7 +23,7 @@
     <form action="#" th:action="@{/kirjaudu}" th:object="${lisattava}" method="post">
         <div>Käyttäjätunnus:<br/> <input th:field="*{nimimerkki}"/></div>
         <div>Salasana:<br/> <input type="password" th:field="*{salasana}"/></div>
-        <div><input th:type="submit" value="Kirjaudu sisään"/></div>
+        <div><input th:type="submit" value="Kirjaudu sisään" class="namiska"/></div>
     </form>
 </div>
 </div>

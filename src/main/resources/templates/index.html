@@ -52,7 +52,7 @@
                             <input style="display:none" th:name="vastattuviesti.id" th:value="${viesti.id}"/>
                             <input style="display:none" th:field="*{kayttaja.nimimerkki}"/>
                             <input th:field="*{teksti}" />
-                            <input th:type="submit" value="Lähetä"/>
+                            <input th:type="submit" value="Lähetä" class="namiska"/>
                         </div></div>
                 </td>
                 <td th:unless="${admin != null}">
@@ -61,7 +61,7 @@
                             <input style="display:none" th:name="vastattuviesti.id" th:value="${viesti.id}"/>
                             <input style="display:none" th:field="*{kayttaja.nimimerkki}"/>
                             <input th:field="*{teksti}" />
-                            <input th:type="submit" value="Lähetä"/>
+                            <input th:type="submit" value="Lähetä" class="namiska"/>
                         </div></div>
                 </td>
 
@@ -70,8 +70,8 @@
             <form action="#" th:action="@{/poista}" method="post">
                 <input th:type="hidden" th:name="kayttaja.nimimerkki" th:value="${viesti.kayttaja.nimimerkki}"/>
                 <input th:type="hidden" th:name="id" th:value="${viesti.id}"/>
-                <td th:if="${admin == 1}==true"><div><input th:type="submit" value="Poista"/></div></td>
-                <td th:if="${lisattava.kayttaja.nimimerkki == viesti.kayttaja.nimimerkki && admin != 1}==true"><div><input th:type="submit" value="Poista"/></div></td>
+                <td th:if="${admin == 1}==true"><div><input th:type="submit" value="Poista" class="namiska"/></div></td>
+                <td th:if="${lisattava.kayttaja.nimimerkki == viesti.kayttaja.nimimerkki && admin != 1}==true"><div><input th:type="submit" value="Poista" class="namiska"/></div></td>
 
             </form>
         </tr>
@@ -86,7 +86,7 @@
     <form action="#" th:action="@{/lisaaviesti}" th:object="${lisattava}" method="post">
         <div><input th:type="hidden" th:field="*{kayttaja.nimimerkki}"/></div>
         <div><input th:field="*{teksti}" style="width:98%; margin-left:2px; margin-bottom:2px;"/></div>
-        <div><input th:type="submit" value="Viestitä" style="margin-left:2px"/></div>
+        <div><input th:type="submit" value="Viestitä" style="margin-left:2px " class="namiska"/></div>
     </form>
     </span>
 </div>

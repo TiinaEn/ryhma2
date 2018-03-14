@@ -7,11 +7,6 @@ body {
     color: #343641;
 }
 
-.rekis {
-background: #6abfa5;
-    border-radius: 0px;
-
-}
 div {
     border-radius: 10px;
 }
@@ -20,10 +15,14 @@ button {
     border-radius: 10px;
 }
 
+input[type=text] {
+    border-radius: 4px;
+}
+
 .content {
     padding: 2px;
     width:60%;
-    height: 95%;
+    height:95vh;
     background-color:#6abfa5;
     margin: auto;
     box-shadow: 5px 10px #888888;
@@ -60,8 +59,15 @@ th {
     border-radius: 10px;
 }
 
+.namiska {
+    background-color: #f6eeba;
+    box-shadow: 2px 5px #888888;
+    border-radius: 4px;
+
+}
 h2 {
     color:#343641;
+    shadow: 2px 5px #888888;
 }
 ul {
     list-style-type: none;
