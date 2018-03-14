@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @Controller
 public class Kontrolleri {
-    Kayttaja kirjautunut;
+    //Kayttaja kirjautunut;
 
     @Autowired
     private ViestiRepositorio repo;
@@ -23,6 +23,32 @@ public class Kontrolleri {
         model.addAttribute("viestit", repo.findAll());
         model.addAttribute("lisattava", new Viesti());
         return "index";
+    }
+
+    @PostMapping("/")
+    public String koti (Viesti viesti, Model model) {
+        Optional<Kayttaja> kirjautunut = krepo.findByNimimerkki(viesti.getKayttaja().getNimimerkki());
+        System.out.println("!!!!!!!!!!!!!!!!!!!!" + kirjautunut);
+        viesti.setKayttaja(kirjautunut.get());
+
+                model.addAttribute("kirjautunut", kirjautunut.get());
+                model.addAttribute("viestit", repo.findAll());
+                model.addAttribute("lisattava", new Viesti(kirjautunut.get()));
+                model.addAttribute("admin", kirjautunut.get().getAdminoikeus());
+                return "index";
+
+
+
+//        Optional<Kayttaja> kirjautunut = krepo.findByNimimerkki(viesti.getKayttaja().getNimimerkki());
+//        viesti.setKayttaja(kirjautunut.get());
+//        System.out.println("!!!!!!" + viesti.getId());
+//        repo.deleteById(viesti.getId());
+//        model.addAttribute("viestit", repo.findAll());
+//        model.addAttribute("lisattava", new Viesti(kirjautunut.get()));
+//        model.addAttribute("kirjautunut", kirjautunut.get());
+//        model.addAttribute("admin", kirjautunut.get().getAdminoikeus());
+
+
     }
 
 
@@ -77,7 +103,7 @@ public class Kontrolleri {
                 model.addAttribute("kirjautunut", kirjautunut.get());
                 model.addAttribute("viestit", repo.findAll());
                 model.addAttribute("lisattava", new Viesti(kayttaja));
-                model.addAttribute("admin", kirjautunut.get().getAdminoikeus());// tee tl:n puolella: jos admin == 1 -> luo "poista" -napit viestien viereen. jos admin == 0 -> ei tehdä mitään.
+                model.addAttribute("admin", kirjautunut.get().getAdminoikeus());
                 return "index";
             }
             model.addAttribute("viesti", "Väärä salasana!");

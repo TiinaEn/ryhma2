@@ -24,7 +24,15 @@
 
     <div class="navi"><ul>
 
-        <li><a href="/">Keskustelupalsta</a></li>
+        <li>
+
+            <form action="#" th:action="@{/}" th:object="${lisattava}" method="post">
+                <!--<input th:name="kayttaja.nimimerkki" th:value="*{kayttaja.nimimerkki}"/>-->
+                <input th:field="*{kayttaja.nimimerkki}"/>
+                <input th:type="submit" value="HOME"/>
+            </form>
+
+        </li>
         <li><a href="/profiili">profiili</a></li>
         <span th:if="${admin == null}">
         <li><a href="/login">login</a></li>
