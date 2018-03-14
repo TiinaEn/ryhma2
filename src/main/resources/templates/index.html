@@ -41,6 +41,7 @@
                 <td th:text="${viesti.aikaleima}"></td><td th:text="${viesti.kayttaja.nimimerkki}"></td><td style="display:none" th:text="${viesti.id}"></td><td th:text="${viesti.teksti}" style="width: 70%">
                 <td><div onclick="toggleReplyVisibility(event)">Vastaa
                 <div class="vastauslaatikko">
+                    <input th:name="vastattuviesti.id" th:value="${viesti.id}"/>
                     <input th:field="*{kayttaja.nimimerkki}"/>
                     <input th:field="*{teksti}" />
                     <input th:type="submit" value="Lähetä"/>

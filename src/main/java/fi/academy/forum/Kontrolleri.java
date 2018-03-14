@@ -43,10 +43,13 @@ public class Kontrolleri {
     public String replausta(@ModelAttribute Viesti viesti, Model model) {
         Optional<Kayttaja> kirjautunut = krepo.findByNimimerkki(viesti.getKayttaja().getNimimerkki());
         viesti.setKayttaja(kirjautunut.get());
-        viesti.setTeksti("|| käyttäjä: " + viesti.getKayttaja().getNimimerkki() + " sanoi: '" + viesti.getTeksti() + "' || " + viesti.getTeksti() );
+        Viesti vastattu = repo.findById(viesti.getVastattuviesti().getId()).get();
+        viesti.setTeksti("|| käyttäjä: " + vastattu.getKayttaja().getNimimerkki() + " sanoi: '" + vastattu.getTeksti() + "' || " + viesti.getTeksti() );
         repo.save(viesti);
         model.addAttribute("viestit", repo.findAll());
         model.addAttribute("lisattava", new Viesti(kirjautunut.get()));
+        model.addAttribute("kirjautunut", kirjautunut.get());
+        model.addAttribute("admin", kirjautunut.get().getAdminoikeus());
         return "index";
     }
 

@@ -9,6 +9,9 @@ public class Viesti {
     @Id @GeneratedValue
     private Integer id;
     private String teksti;
+    @Transient
+    private Viesti vastattuviesti;
+
     private Timestamp aikaleima = new Timestamp(new Date().getTime());
 
     @ManyToOne
@@ -77,5 +80,13 @@ public class Viesti {
 
     public void setKayttaja(Kayttaja kayttaja) {
         this.kayttaja = kayttaja;
+    }
+
+    public Viesti getVastattuviesti() {
+        return vastattuviesti;
+    }
+
+    public void setVastattuviesti(Viesti vastattuviesti) {
+        this.vastattuviesti = vastattuviesti;
     }
 }
