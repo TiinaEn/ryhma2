@@ -49,7 +49,7 @@
 
             </form>
             <form action="#" th:action="@{/poista}" method="post">
-                <input th:name="kayttaja.nimimerkki" th:value="${viesti.kayttaja.nimimerkki}"/>
+                <input th:type="hidden" th:name="kayttaja.nimimerkki" th:value="${viesti.kayttaja.nimimerkki}"/>
                 <input th:type="hidden" th:name="id" th:value="${viesti.id}"/>
                 <td th:if="${admin == 1}==true"><div><input th:type="submit" value="Poista"/></div></td>
             </form>
@@ -64,7 +64,7 @@
     <br/>
 <div id="divi2">
     <form action="#" th:action="@{/lisaaviesti}" th:object="${lisattava}" method="post">
-        <div>Kayttaja:<br/> <input th:field="*{kayttaja.nimimerkki}"/></div>
+        <div><input th:type="hidden" th:field="*{kayttaja.nimimerkki}"/></div>
         <div>Viesti:<br/> <input th:field="*{teksti}"/></div>
         <div><input th:type="submit" value="Viestitä"/></div>
     </form>
