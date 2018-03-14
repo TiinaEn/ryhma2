@@ -38,7 +38,18 @@ public class Kontrolleri {
         return "index";
 
     }
-    
+
+    @PostMapping("/reply")
+    public String replausta(@ModelAttribute Viesti viesti, Model model) {
+        Optional<Kayttaja> kirjautunut = krepo.findByNimimerkki(viesti.getKayttaja().getNimimerkki());
+        viesti.setKayttaja(kirjautunut.get());
+        viesti.setTeksti("|| käyttäjä: " + viesti.getKayttaja().getNimimerkki() + " sanoi: '" + viesti.getTeksti() + "' || " + viesti.getTeksti() );
+        repo.save(viesti);
+        model.addAttribute("viestit", repo.findAll());
+        model.addAttribute("lisattava", new Viesti(kirjautunut.get()));
+        return "index";
+    }
+
 
     @GetMapping("/login")
     public String login (Model model) {

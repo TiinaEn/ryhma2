@@ -1,14 +1,15 @@
 package fi.academy.forum;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.sql.Timestamp;
+import java.util.Date;
 
 @Entity
 public class Viesti {
     @Id @GeneratedValue
     private Integer id;
     private String teksti;
-    private LocalDate aikaleima;
+    private Timestamp aikaleima = new Timestamp(new Date().getTime());
 
     @ManyToOne
     @JoinColumn(name="kayttaja")
@@ -18,18 +19,15 @@ public class Viesti {
 
     public Viesti(String teksti, Kayttaja kayttaja) {
         this.teksti = teksti;
-        this.aikaleima = LocalDate.now();
         this.kayttaja = kayttaja;
     }
 
     public Viesti(Kayttaja kayttaja) {
         this.kayttaja = kayttaja;
-        this.aikaleima = LocalDate.now();
     }
 
 
     public Viesti() {
-        this.aikaleima = LocalDate.now();
     }
 
     public Integer getId() {
@@ -48,11 +46,11 @@ public class Viesti {
         this.teksti = teksti;
     }
 
-    public LocalDate getAikaleima() {
-        return aikaleima;
+    public String getAikaleima() {
+        return aikaleima.toString().substring(0,19);
     }
 
-    public void setAikaleima(LocalDate aikaleima) {
+    public void setAikaleima(Timestamp aikaleima) {
         this.aikaleima = aikaleima;
     }
 
