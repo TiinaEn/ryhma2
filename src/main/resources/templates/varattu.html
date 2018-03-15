@@ -15,11 +15,39 @@
 </div>
 
     <div class="navi"><ul>
-        <li><a href="/">Keskustelupalsta</a></li>
-        <li><a href="/login">login</a></li>
-        <li><a href="/rekisterointi">rekisteröinti</a></li>
-        <li><a href="/profiili">profiili</a></li>
-        <li><a href="/logout">Ulos!</a></li>
+        <li>
+            <form th:action="@{/}">
+                <input th:type="submit" value="KESKUSTELUPALSTA" class="nappi"/>
+            </form>
+        </li>
+        <li>
+        <span th:if="${admin == null}">
+                <form th:action="@{/profiili}">
+                    <input th:type="submit" value="PROFIILI" class="nappi"/>
+                </form>
+        </span>
+        </li>
+        <li>
+        <span th:if="${admin == null}">
+                <form th:action="@{/login}">
+                    <input  th:type="submit" value="LOGIN" class="nappi"/>
+                </form>
+        </span>
+        </li>
+        <li>
+        <span th:unless="${admin == null}">
+                <form th:action="@{/logout}">
+                    <input th:type="submit" value="LOGOUT" class="nappi"/>
+                </form>
+        </span>
+        </li>
+        <li>
+            <span th:if="${admin == null}">
+                <form th:action="@{/rekisterointi}">
+                    <input th:type="submit" value="REKISTERÖIDY" class="nappi"/>
+                </form>
+            </span>
+        </li>
     </ul></div>
 
 <div class="content">
