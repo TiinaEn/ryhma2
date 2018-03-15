@@ -20,6 +20,11 @@
                     <input th:type="hidden" th:name="id" th:value="${kirjautunut.id}"/>
                   </form></span>
         </li>
+        <li>
+            <form th:action="@{/}"th:object="${lisattava}">
+                <input th:type="submit" value="KESKUSTELUPALSTA" class="nappi"/>
+            </form>
+        </li>
 <!--        <li>
             <form action="#" th:action="@{/}" th:object="${lisattava}" method="post">
                 &lt;!&ndash;<input th:name="kayttaja.nimimerkki" th:value="*{kayttaja.nimimerkki}"/>&ndash;&gt;

@@ -28,12 +28,13 @@
                 </form>
 
             <li>-->
-                <form action="#" th:action="@{/}" th:object="${lisattava}" method="post">
+            <li>
+                <form th:action="@{/}"th:object="${lisattava}">
                     <input th:type="submit" value="KESKUSTELUPALSTA" class="nappi"/>
                 </form>
             </li>
 
-            </li>
+
             <li>
             <span th:if="${admin != null}">
                   <form th:action="@{/kayttaja}">
@@ -120,6 +121,7 @@
     <form action="#" th:action="@{/lisaaviesti}" th:object="${lisattava}" method="post" th:if="${kirjautunut}">
         <!--<div><input th:type="hidden" th:field="*{kayttaja.nimimerkki}"/></div>-->
         <input th:type="hidden" th:name="kayttaja.nimimerkki" th:value="${kirjautunut.nimimerkki}"/>
+        <input type="hidden" th:field="*{viestiketju}"/>
         <div><textarea th:field="*{teksti}" rows="10" cols="94" style="margin-left:2px; margin-bottom:2px;"/></div>
         <div><input th:type="submit" value="Lähetä viesti" style="margin-left:2px " class="namiska"/></div>
     </form>
