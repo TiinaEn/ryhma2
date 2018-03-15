@@ -126,8 +126,7 @@ ul {
 
 .viivoitus {
     border-top: solid #343641;
-    border-bottom: solid #343641;
-    padding-bottom: 5px;
+    margin-top: 10px;
 }
 /* JOS haluamme piilottaa reply-laatikon, täällä on tarvittavat koodit
 .vastauslaatikko {
