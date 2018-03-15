@@ -15,17 +15,17 @@
 
 <div class="navi"><ul>
 
-    <li>
+<!--    <li>
 
         <form action="#" th:action="@{/}" th:object="${lisattava}" method="post">
-            <!--<input th:name="kayttaja.nimimerkki" th:value="*{kayttaja.nimimerkki}"/>-->
+            &lt;!&ndash;<input th:name="kayttaja.nimimerkki" th:value="*{kayttaja.nimimerkki}"/>&ndash;&gt;
             <input th:field="*{kayttaja.nimimerkki}"/>
             <input th:type="submit" value="HOME" class="nappi"/>
         </form>
 
-    </li>
+    </li>-->
     <li>
-        <span th:if="${admin == null}">
+        <span th:if="${admin != null}">
                 <form th:action="@{/profiili}">
                     <input th:type="submit" value="PROFIILI" class="nappi"/>
                 </form>
@@ -34,21 +34,23 @@
     <li>
         <span th:if="${admin == null}">
                 <form th:action="@{/login}">
-                    <input  th:type="submit" value="LOGIN" class="nappi"/>
+                    <input  th:type="submit" value="KIRJAUDU SISÄÄN" class="nappi"/>
                 </form>
         </span>
     </li>
     <li>
         <span th:unless="${admin == null}">
                 <form th:action="@{/logout}">
-                    <input th:type="submit" value="LOGOUT" class="nappi"/>
+                    <input th:type="submit" value="KIRJAUDU ULOS" class="nappi"/>
                 </form>
         </span>
     </li>
     <li>
+        <span th:if="${admin == null}">
         <form th:action="@{/rekisterointi}">
             <input th:type="submit" value="REKISTERÖIDY" class="nappi"/>
         </form>
+        </span>
     </li>
 
 </ul></div>
