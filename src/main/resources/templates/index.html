@@ -13,31 +13,41 @@
 </div>
 
 
-    <div class="navi"><ul>
+    <div class="navi">
 
-        <li>
+        <ul>
 
-            <form action="#" th:action="@{/}" th:object="${lisattava}" method="post">
-                <!--<input th:name="kayttaja.nimimerkki" th:value="*{kayttaja.nimimerkki}"/>-->
-                <input th:field="*{kayttaja.nimimerkki}"/>
-                <input th:type="submit" value="HOME"/>
-            </form>
+            <li>
 
-        </li>
-        <span th:if="${admin != null}">
-        <li><a href="/profiili">profiili</a></li>
+                <form action="#" th:action="@{/}" th:object="${lisattava}" method="post">
+                    <!--<input th:name="kayttaja.nimimerkki" th:value="*{kayttaja.nimimerkki}"/>-->
+                    <input th:field="*{kayttaja.nimimerkki}"/>
+                    <input th:type="submit" value="HOME"/>
+                </form>
+
+            </li>
+            <span th:if="${admin != null}">
+                <form th:action="@{/profiili}">
+            <input th:type="submit" value="PROFIILI"/>
+        </form>
         </span>
-        <span th:if="${admin == null}">
-        <li><a href="/login">login</a></li>
+            <span th:if="${admin == null}">
+                       <form th:action="@{/login}">
+            <input th:type="submit" value="LOGIN"/>
+        </form>
         </span>
-        <span th:unless="${admin == null}">
-        <li><a href="/logout">Ulos!</a></li>
+            <span th:unless="${admin == null}">
+                       <form th:action="@{/logout}">
+            <input th:type="submit" value="LOGOUT"/>
+        </form>
         </span>
-        <span th:if="${admin == null}">
-        <li><a href="/rekisterointi">rekisteröinti</a></li>
+            <span th:if="${admin == null}">
+                       <form th:action="@{/rekisterointi}">
+            <input th:type="submit" value="REKISTERÖIDY"/>
+        </form>
         </span>
 
-    </ul></div>
+        </ul></div>
     <div class="content">
 <div style="width: 100%; border-radius: 10px;">
 
