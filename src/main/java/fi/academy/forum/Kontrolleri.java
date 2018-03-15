@@ -26,9 +26,9 @@ public class Kontrolleri {
         return "viestiketjut";
     }
 
-    @GetMapping("/viestiketjut/{id}")
-    public String listaaViestitViestiketjussa (Model model, @PathVariable("id")Integer id) {
-        List<Viesti> viestilista = repo.etsiKaikkiAikajarjestyksessaID(id);
+    @PostMapping("/viestiketjut")
+    public String listaaViestitViestiketjussa (Model model, Viesti viesti) {
+        List<Viesti> viestilista = repo.etsiKaikkiAikajarjestyksessaID(viesti.getViestiketju());
         model.addAttribute("viestit", viestilista);
         model.addAttribute("lisattava", new Viesti());
         return "index";
