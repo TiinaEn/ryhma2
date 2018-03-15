@@ -44,7 +44,7 @@ input[type=text] {
     border-radius: 10px;
 }
 
-tr:nth-child(even) {background: #f6eeba}
+tr:nth-child(even) {background: #f6eeba; }
 tr:nth-child(odd) {background: #6abfa5}
 
  table {
