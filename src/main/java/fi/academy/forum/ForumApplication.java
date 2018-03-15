@@ -17,8 +17,10 @@ public class ForumApplication {
 		return (args -> {
 			Kayttaja admin = new Kayttaja("admin", "admin");
 			admin.setAdminoikeus(1);
+			admin.setViestienMaara(1);
 			krepo.save(admin);
 			Kayttaja user = new Kayttaja("user", "user");
+			user.setViestienMaara(2);
 			krepo.save(user);
 			Viesti v1 = new Viesti("terve", admin, 1, 1, "Ensimmäinen keskustelu koirista");
 			Viesti v2 = new Viesti("Halloota!", user, 1);
