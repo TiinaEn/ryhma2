@@ -25,20 +25,17 @@ public class Viesti {
     public Viesti(String teksti, Kayttaja kayttaja) {
         this.teksti = teksti;
         this.kayttaja = kayttaja;
-        this.kayttaja.setViestienMaara(this.kayttaja.getViestienMaara()+1);
     }
 
     public Viesti(String teksti, Kayttaja kayttaja, Integer viestiketju) {
         this.teksti = teksti;
         this.kayttaja = kayttaja;
-        this.kayttaja.setViestienMaara(this.kayttaja.getViestienMaara()+1);
         this.viestiketju = viestiketju;
     }
 
     public Viesti(String teksti, Kayttaja kayttaja, Integer viestiketju, Integer viestiketjunAloittaja, String otsikko) {
         this.teksti = teksti;
         this.kayttaja = kayttaja;
-        this.kayttaja.setViestienMaara(this.kayttaja.getViestienMaara()+1);
         this.viestiketju = viestiketju;
         this.otsikko = otsikko;
         this.viestiketjunAloittaja = viestiketjunAloittaja;
@@ -48,13 +45,11 @@ public class Viesti {
         this.viestiketjunAloittaja = viestiketjunAloittaja;
         this.teksti = teksti;
         this.kayttaja = kayttaja;
-        this.kayttaja.setViestienMaara(this.kayttaja.getViestienMaara()+1);
         this.viestiketju = viestiketju;
     }
 
     public Viesti(Kayttaja kayttaja) {
         this.kayttaja = kayttaja;
-        this.kayttaja.setViestienMaara(this.kayttaja.getViestienMaara()+1);
     }
 
     public Viesti() {
