@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" type="text/css" href="tyyli.css">
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <link rel="shortcut icon" type="image/png" href="/favi.png"/>
+
+</head>
+<body>
+<div class="banner">
+    <img src="banneri.png" alt="Banneri" align="center" width="100%" style="border-radius:15px">
+</div>
+
+
+<div class="navi"><ul>
+
+    <li>
+
+        <form action="#" th:action="@{/}" th:object="${lisattava}" method="post">
+            <!--<input th:name="kayttaja.nimimerkki" th:value="*{kayttaja.nimimerkki}"/>-->
+            <input th:field="*{kayttaja.nimimerkki}"/>
+            <input th:type="submit" value="HOME"/>
+        </form>
+
+    </li>
+    <li><a href="/profiili">profiili</a></li>
+    <span th:if="${admin == null}">
+        <li><a href="/login">login</a></li>
+        </span>
+    <span th:unless="${admin == null}">
+        <li><a href="/logout">Ulos!</a></li>
+        </span>
+    <span th:if="${admin == null}">
+        <li><a href="/rekisterointi">rekisteröinti</a></li>
+        </span>
+
+</ul></div>
+<div class="content">
+    <div style="width: 100%; border-radius: 10px;">
+
+        <table style="width: 100%; ">
+            <tr style="border: solid black; width:100%;"><th>Postausaika</th><th>Aloittaja</th><th>Viesti</th><th>Osoite</th></tr>
+            <tr th:each="viesti: ${viestit}" style="height: 15px;">
+                    <td th:text="${viesti.aikaleima}" style="width:16%"></td>
+                    <td th:text="${viesti.kayttaja.nimimerkki}" style="width:16%"></td>
+                    <td th:text="${viesti.teksti}" style="width:16%"></td>
+                   <td></t> <a th:href="@{'/viestiketjut/' + ${viesti.viestiketju}}">Syöksy keskusteluun!</a></td>
+
+
+            </tr>
+
+        </table>
+
+    </div>
+
+
+</div>
+</body>
+</html>

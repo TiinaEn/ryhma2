@@ -3,9 +3,7 @@ package fi.academy.forum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -26,6 +24,23 @@ public class Kontrolleri {
         model.addAttribute("viestit", viestilista);
         model.addAttribute("lisattava", new Viesti());
         return "index";
+    }
+
+    @GetMapping("/viestiketjut/{id}")
+    public String listaaViestitViestiketjussa (Model model, @PathVariable("id")Integer id) {
+        List<Viesti> viestilista = repo.etsiKaikkiAikajarjestyksessaID(id);
+        model.addAttribute("viestit", viestilista);
+        model.addAttribute("lisattava", new Viesti());
+        return "index";
+    }
+
+    @GetMapping("/viestiketjut")
+    public String listaaViestiketjut (Model model) {
+        /*model.addAttribute("viestit", repo.findAll());*/
+        List<Viesti> viestiLista = repo.etsiKaikkiViestiketjut();
+        model.addAttribute("viestit", viestiLista);
+        model.addAttribute("lisattava", new Viesti());
+        return "viestiketjut";
     }
 
     @PostMapping("/")
