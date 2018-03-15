@@ -20,9 +20,12 @@ public class Kayttaja {
         this.nimimerkki = nimimerkki;
         this.salasana = salasana;
         this.adminoikeus = 0;
+        this.viestienMaara = 0;
     }
 
     public Kayttaja() {
+        this.adminoikeus = 0;
+        this.viestienMaara = 0;
     }
 
     public Integer getId() {
