@@ -68,7 +68,7 @@
                     <form action="#" th:action="@{/viestiketjut}" method="post">
                         <input th:name="viestiketju" th:value="${viesti.viestiketju}"/>
 
-                        <input th:name="nimimerkki" th:value="${viesti.kayttaja.nimimerkki}"/>
+                        <input th:name="kayttaja.nimimerkki" th:value="${kayttaja}?${kayttaja.nimimerkki}:''"/>
 
                         <!--<input th:name="nimimerkki" th:value="${viesti.kayttaja.nimimerkki}"/>-->
                         <input th:type="submit" value="Syöksy keskusteluun!" class="namiska"/>
