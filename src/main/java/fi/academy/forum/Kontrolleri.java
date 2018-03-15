@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -57,7 +58,8 @@ public class Kontrolleri {
         Optional<Kayttaja> kirjautunut = krepo.findByNimimerkki(viesti.getKayttaja().getNimimerkki());
         viesti.setKayttaja(kirjautunut.get());
         repo.save(viesti);
-        model.addAttribute("viestit", repo.findAll());
+        List<Viesti> viestilista = repo.etsiKaikkiAikajarjestyksessa();
+        model.addAttribute("viestit", viestilista);
         model.addAttribute("lisattava", new Viesti(kirjautunut.get()));
         model.addAttribute("admin", kirjautunut.get().getAdminoikeus());
 
