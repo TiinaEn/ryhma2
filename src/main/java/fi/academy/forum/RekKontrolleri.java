@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Optional;
 
+// Tässä kontrollerissa ovat rekisteröitymiseen ja profiilinhallintaan liittyvät metodit
 @Controller
 public class RekKontrolleri {
 
@@ -96,5 +97,12 @@ public class RekKontrolleri {
         model.addAttribute("viesti", "Profiilitietoja ei löydy!");
         model.addAttribute("luku", 0);
         return "varattu"; // Jos Optional<Kayttaja> onkin null, ohjataan virhesivulle
+    }
+
+    @RequestMapping("/salasana")
+    public String unohtunutsalasana(Model model) {
+        model.addAttribute("viesti", "Uusi salasana lähetetään profiilitiedoissa antamaasi sähköpostiosoitteeseen");
+        model.addAttribute("luku", 4);
+        return "varattu";
     }
 }
