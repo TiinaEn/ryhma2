@@ -21,7 +21,9 @@ public class Kontrolleri {
 
     @GetMapping("/")
     public String listaaViestit (Model model) {
-        model.addAttribute("viestit", repo.findAll());
+        /*model.addAttribute("viestit", repo.findAll());*/
+        List<Viesti> viestilista = repo.etsiKaikkiAikajarjestyksessa();
+        model.addAttribute("viestit", viestilista);
         model.addAttribute("lisattava", new Viesti());
         return "index";
     }
@@ -33,7 +35,9 @@ public class Kontrolleri {
         viesti.setKayttaja(kirjautunut.get());
 
                 model.addAttribute("kirjautunut", kirjautunut.get());
-                model.addAttribute("viestit", repo.findAll());
+              /*  model.addAttribute("viestit", repo.findAll());*/
+                List<Viesti> viestilista = repo.etsiKaikkiAikajarjestyksessa();
+                model.addAttribute("viestit", viestilista);
                 model.addAttribute("lisattava", new Viesti(kirjautunut.get()));
                 model.addAttribute("admin", kirjautunut.get().getAdminoikeus());
                 return "index";
@@ -74,7 +78,9 @@ public class Kontrolleri {
         Viesti vastattu = repo.findById(viesti.getVastattuviesti().getId()).get();
         viesti.setTeksti("|| " + vastattu.getKayttaja().getNimimerkki() + ": '" + vastattu.getTeksti() + "' ||" + viesti.getTeksti() );
         repo.save(viesti);
-        model.addAttribute("viestit", repo.findAll());
+       /* model.addAttribute("viestit", repo.findAll());*/
+        List<Viesti> viestilista = repo.etsiKaikkiAikajarjestyksessa();
+        model.addAttribute("viestit", viestilista);
         model.addAttribute("lisattava", new Viesti(kirjautunut.get()));
         model.addAttribute("kirjautunut", kirjautunut.get());
         model.addAttribute("admin", kirjautunut.get().getAdminoikeus());
@@ -103,7 +109,9 @@ public class Kontrolleri {
             if (kirjautunut.get().getSalasana().equals(kayttaja.getSalasana())) {
 
                 model.addAttribute("kirjautunut", kirjautunut.get());
-                model.addAttribute("viestit", repo.findAll());
+                /*model.addAttribute("viestit", repo.findAll());*/
+                List<Viesti> viestilista = repo.etsiKaikkiAikajarjestyksessa();
+                model.addAttribute("viestit", viestilista);
                 model.addAttribute("lisattava", new Viesti(kayttaja));
                 model.addAttribute("admin", kirjautunut.get().getAdminoikeus());
                 return "index";
@@ -127,7 +135,9 @@ public class Kontrolleri {
         viesti.setKayttaja(kirjautunut.get());
         System.out.println("!!!!!!" + viesti.getId());
         repo.deleteById(viesti.getId());
-        model.addAttribute("viestit", repo.findAll());
+        /*model.addAttribute("viestit", repo.findAll());*/
+        List<Viesti> viestilista = repo.etsiKaikkiAikajarjestyksessa();
+        model.addAttribute("viestit", viestilista);
         model.addAttribute("lisattava", new Viesti(kirjautunut.get()));
         model.addAttribute("kirjautunut", kirjautunut.get());
         model.addAttribute("admin", kirjautunut.get().getAdminoikeus());
