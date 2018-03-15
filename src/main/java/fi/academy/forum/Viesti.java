@@ -13,11 +13,7 @@ public class Viesti {
     @Transient
     private Viesti vastattuviesti;
     private Integer viestiketjunAloittaja=0;
-
-
     private Integer viestiketju;
-
-
     private Timestamp aikaleima = new Timestamp(new Date().getTime());
 
     @ManyToOne
@@ -29,17 +25,20 @@ public class Viesti {
     public Viesti(String teksti, Kayttaja kayttaja) {
         this.teksti = teksti;
         this.kayttaja = kayttaja;
+        this.kayttaja.setViestienMaara(this.kayttaja.getViestienMaara()+1);
     }
 
     public Viesti(String teksti, Kayttaja kayttaja, Integer viestiketju) {
         this.teksti = teksti;
         this.kayttaja = kayttaja;
+        this.kayttaja.setViestienMaara(this.kayttaja.getViestienMaara()+1);
         this.viestiketju = viestiketju;
     }
 
     public Viesti(String teksti, Kayttaja kayttaja, Integer viestiketju, Integer viestiketjunAloittaja, String otsikko) {
         this.teksti = teksti;
         this.kayttaja = kayttaja;
+        this.kayttaja.setViestienMaara(this.kayttaja.getViestienMaara()+1);
         this.viestiketju = viestiketju;
         this.otsikko = otsikko;
         this.viestiketjunAloittaja = viestiketjunAloittaja;
@@ -49,13 +48,14 @@ public class Viesti {
         this.viestiketjunAloittaja = viestiketjunAloittaja;
         this.teksti = teksti;
         this.kayttaja = kayttaja;
+        this.kayttaja.setViestienMaara(this.kayttaja.getViestienMaara()+1);
         this.viestiketju = viestiketju;
     }
 
     public Viesti(Kayttaja kayttaja) {
         this.kayttaja = kayttaja;
+        this.kayttaja.setViestienMaara(this.kayttaja.getViestienMaara()+1);
     }
-
 
     public Viesti() {
     }
@@ -76,6 +76,7 @@ public class Viesti {
         this.teksti = teksti;
     }
 
+    // Haetaan aikaleimasta päiväys ja kellonaika sekuntien tarkkuudella
     public String getAikaleima() {
         return aikaleima.toString().substring(0,19);
     }
@@ -83,7 +84,6 @@ public class Viesti {
     public void setAikaleima(Timestamp aikaleima) {
         this.aikaleima = aikaleima;
     }
-
 
     public Integer getLaskuri() {
         return laskuri;
@@ -117,7 +117,6 @@ public class Viesti {
         this.vastattuviesti = vastattuviesti;
     }
 
-
     public Integer getViestiketju() {
         return viestiketju;
     }
@@ -125,7 +124,6 @@ public class Viesti {
     public void setViestiketju(Integer viestiketju) {
         this.viestiketju = viestiketju;
     }
-
 
     public Integer getViestiketjunAloittaja() {
         return viestiketjunAloittaja;

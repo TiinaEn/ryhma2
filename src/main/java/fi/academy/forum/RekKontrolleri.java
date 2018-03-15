@@ -99,6 +99,7 @@ public class RekKontrolleri {
         return "varattu"; // Jos Optional<Kayttaja> onkin null, ohjataan virhesivulle
     }
 
+    // Unohtuneen salasanan käsittely
     @RequestMapping("/salasana")
     public String unohtunutsalasana(Model model) {
         model.addAttribute("viesti", "Uusi salasana lähetetään profiilitiedoissa antamaasi sähköpostiosoitteeseen");
