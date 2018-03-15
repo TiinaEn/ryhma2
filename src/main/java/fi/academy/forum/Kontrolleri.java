@@ -20,7 +20,7 @@ public class Kontrolleri {
     @GetMapping("/")
     public String listaaViestit (Model model) {
         /*model.addAttribute("viestit", repo.findAll());*/
-        List<Viesti> viestilista = repo.etsiKaikkiAikajarjestyksessa();
+        List<Viesti> viestilista = repo.etsiKaikkiViestiketjut();
         model.addAttribute("viestit", viestilista);
         model.addAttribute("lisattava", new Viesti());
         return "viestiketjut";
