@@ -23,7 +23,7 @@ public class Kontrolleri {
         List<Viesti> viestilista = repo.etsiKaikkiAikajarjestyksessa();
         model.addAttribute("viestit", viestilista);
         model.addAttribute("lisattava", new Viesti());
-        return "index";
+        return "viestiketjut";
     }
 
     @GetMapping("/viestiketjut/{id}")

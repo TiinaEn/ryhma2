@@ -21,7 +21,9 @@
 
                 <form action="#" th:action="@{/}" th:object="${lisattava}" method="post">
                     <!--<input th:name="kayttaja.nimimerkki" th:value="*{kayttaja.nimimerkki}"/>-->
-                    <input th:field="*{kayttaja.nimimerkki}"/>
+
+                    <!-- TÄMÄ HALUTAAN OIKEAAN YLÄKULMAAN NIIN TIEDETÄÄN KUKA ON KIRJAUTUNEENA -->
+                    <!--<input th:text="'Kirjautuneena:' + *{kayttaja.nimimerkki}"/>-->
                     <input th:type="submit" value="HOME"/>
                 </form>
 
