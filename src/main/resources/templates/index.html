@@ -81,20 +81,20 @@
                 <td><a th:href="@{/kayttaja}+'?id='+${viesti.kayttaja.id}" style="text-decoration: none" th:text="${viesti.kayttaja.nimimerkki}"/></td>
                 <td style="display:none" th:text="${viesti.id}"></td>
                 <td th:text="${viesti.teksti}" style="width: 55%">
-                <td th:if="${admin != null}">
+                <td th:if="${admin != null}" style="width: 20%">
                         <div class="vastauslaatikko">
                             <input style="display:none" th:name="vastattuviesti.id" th:value="${viesti.id}"/>
                             <input style="display:none" th:field="*{kayttaja.nimimerkki}"/>
-                            <input th:field="*{teksti}" style="width:53%"/>
+                            <input th:field="*{teksti}" style="width:100%"/>
                             <input th:type="submit" value="Lähetä" class="namiska"/>
                         </div>
                 </td>
-                <td th:unless="${admin != null}">
+                <td th:unless="${admin != null}" style="width: 20%">
                     <div style="display: none">
                         <div class="vastauslaatikko">
                             <input style="display:none" th:name="vastattuviesti.id" th:value="${viesti.id}"/>
                             <input style="display:none" th:field="*{kayttaja.nimimerkki}"/>
-                            <input th:field="*{teksti}" style="width:53%"/>
+                            <input th:field="*{teksti}" style="width:100%"/>
                             <input th:type="submit" value="Lähetä" class="namiska"/>
                         </div></div>
                 </td>
