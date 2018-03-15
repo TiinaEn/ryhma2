@@ -36,7 +36,9 @@ public class Kontrolleri {
         }
         List<Viesti> viestilista = repo.etsiKaikkiAikajarjestyksessaID(viesti.getViestiketju());
         model.addAttribute("viestit", viestilista);
-        model.addAttribute("lisattava", new Viesti(kirjautunut));
+        Viesti lisattava = new Viesti(kirjautunut);
+        lisattava.setViestiketju(viesti.getViestiketju());
+        model.addAttribute("lisattava", lisattava);
         model.addAttribute("kirjautunut", kirjautunut);
         model.addAttribute("admin", kirjautunut!=null?kirjautunut.getAdminoikeus():null);
         return "index";
@@ -95,7 +97,7 @@ public class Kontrolleri {
         viesti.setKayttaja(k);
         k.setViestienMaara((k.getViestienMaara()+1));
         repo.save(viesti);
-        List<Viesti> viestilista = repo.etsiKaikkiAikajarjestyksessaID(viesti.getViestiketju());
+        List<Viesti> viestilista = repo.etsiKaikkiViestiketjut();
         model.addAttribute("kirjautunut", k);
         model.addAttribute("viestit", viestilista);
         model.addAttribute("lisattava", new Viesti(k));
