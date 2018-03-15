@@ -37,6 +37,14 @@ public class Viesti {
         this.viestiketju = viestiketju;
     }
 
+    public Viesti(String teksti, Kayttaja kayttaja, Integer viestiketju, Integer viestiketjunAloittaja, String otsikko) {
+        this.teksti = teksti;
+        this.kayttaja = kayttaja;
+        this.viestiketju = viestiketju;
+        this.otsikko = otsikko;
+        this.viestiketjunAloittaja = viestiketjunAloittaja;
+    }
+
     public Viesti(String teksti, Kayttaja kayttaja, Integer viestiketju, Integer viestiketjunAloittaja) {
         this.viestiketjunAloittaja = viestiketjunAloittaja;
         this.teksti = teksti;
