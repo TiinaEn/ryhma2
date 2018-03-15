@@ -139,8 +139,24 @@ public class Kontrolleri {
         List<Viesti> viestilista = repo.etsiKaikkiAikajarjestyksessa();
         model.addAttribute("viestit", viestilista);
         model.addAttribute("lisattava", new Viesti(kirjautunut.get()));
-        model.addAttribute("kirjautunut", kirjautunut.get());
-        model.addAttribute("admin", kirjautunut.get().getAdminoikeus());
+
+        Kayttaja k = new Kayttaja();
+        int i = 0;
+        if (kirjautunut.get().getAdminoikeus() == 1) {
+            System.out.println("****************** jee");
+            k = kirjautunut.get();
+            i = 1;
+        } else {
+            Optional<Kayttaja> opt = krepo.findByAdminoikeus(1);
+            System.out.println("************" + opt);
+            if (opt.isPresent()) {
+                k = opt.get();
+                i = 0;
+            }
+        }
+
+        model.addAttribute("kirjautunut", k);
+        model.addAttribute("admin", i);
 
 
 
