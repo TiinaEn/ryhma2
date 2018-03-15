@@ -11,6 +11,8 @@ public class Viesti {
     private String teksti;
     @Transient
     private Viesti vastattuviesti;
+    private Integer viestiketju;
+
 
     private Timestamp aikaleima = new Timestamp(new Date().getTime());
 
@@ -23,6 +25,12 @@ public class Viesti {
     public Viesti(String teksti, Kayttaja kayttaja) {
         this.teksti = teksti;
         this.kayttaja = kayttaja;
+    }
+
+    public Viesti(String teksti, Kayttaja kayttaja, Integer viestiketju) {
+        this.teksti = teksti;
+        this.kayttaja = kayttaja;
+        this.viestiketju = viestiketju;
     }
 
     public Viesti(Kayttaja kayttaja) {
@@ -88,5 +96,14 @@ public class Viesti {
 
     public void setVastattuviesti(Viesti vastattuviesti) {
         this.vastattuviesti = vastattuviesti;
+    }
+
+
+    public Integer getViestiketju() {
+        return viestiketju;
+    }
+
+    public void setViestiketju(Integer viestiketju) {
+        this.viestiketju = viestiketju;
     }
 }

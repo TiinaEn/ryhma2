@@ -46,7 +46,6 @@
                 <span th:if="${admin != null}"><th>Poista</th></tr>
 
         <tr th:each="viesti: ${viestit}" style="height: 15px;">
-
             <form action="#" th:action="@{/reply}" th:object="${lisattava}" method="post">
                 <td th:text="${viesti.aikaleima}" style="width:16%"></td>
                 <td><a th:href="@{/kayttaja}+'?id='+${viesti.kayttaja.id}" style="text-decoration: none" th:text="${viesti.kayttaja.nimimerkki}"/></td>

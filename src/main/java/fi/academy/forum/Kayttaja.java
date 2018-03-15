@@ -13,7 +13,7 @@ public class Kayttaja {
     private Integer viestienMaara;
     private String salasana;
     private String sahkoposti;
-    private int adminoikeus;
+    private Integer adminoikeus;
 
 
     public Kayttaja(String nimimerkki, String salasana) {
