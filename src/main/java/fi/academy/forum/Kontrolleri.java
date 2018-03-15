@@ -42,6 +42,24 @@ public class Kontrolleri {
         return "index";
     }
 
+    // Tää ei löydä käyttäjää mutta ohjaa suoraan virhesivulle ..
+    @GetMapping("/omattiedot")
+    public String profiilisivu(Viesti viesti, Model model) {
+        Kayttaja lomakkeeltaTullutKirjautunut = viesti.getKayttaja();
+        Optional<Kayttaja> optkirjautunut = lomakkeeltaTullutKirjautunut
+                != null ? krepo.findByNimimerkki(lomakkeeltaTullutKirjautunut.getNimimerkki()) : Optional.empty();
+        Kayttaja kirjautunut = null;
+        if (optkirjautunut.isPresent()) {
+            kirjautunut = optkirjautunut.get();
+            model.addAttribute("kayttaja", kirjautunut);
+            return "profiili";
+        }
+
+        model.addAttribute("viesti", "Profiilitietoja ei löydy!");
+        model.addAttribute("luku", 0);
+        return "varattu"; // Jos Optional<Kayttaja> onkin null, ohjataan virhesivulle
+    }
+
     @GetMapping("/viestiketjut")
     public String listaaViestiketjut (Model model) {
         /*model.addAttribute("viestit", repo.findAll());*/
