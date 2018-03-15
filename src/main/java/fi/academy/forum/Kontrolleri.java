@@ -112,7 +112,7 @@ public class Kontrolleri {
         viesti.setViestiketju(dumppi+1);
         k.setViestienMaara(k.getViestienMaara()+1);
         repo.save(viesti);
-        List<Viesti> viestilista = repo.etsiKaikkiAikajarjestyksessa();
+        List<Viesti> viestilista = repo.etsiKaikkiViestiketjut();
         model.addAttribute("viestit", viestilista);
         model.addAttribute("lisattava", new Viesti(k));
         model.addAttribute("admin", k.getAdminoikeus());
@@ -134,6 +134,7 @@ public class Kontrolleri {
         Viesti vastattu = repo.findById(viesti.getVastattuviesti().getId()).get();
         viesti.setTeksti("|| " + vastattu.getKayttaja().getNimimerkki() + ": '" + vastattu.getTeksti() + "' ||" + viesti.getTeksti() );
         k.setViestienMaara(k.getViestienMaara()+1);
+        viesti.setViestiketju(vastattu.getViestiketju());
         repo.save(viesti);
 
         List<Viesti> viestilista = repo.etsiKaikkiAikajarjestyksessa();
