@@ -22,14 +22,17 @@ input[type=text] {
     background-color:#f6eeba;
     margin: auto;
     box-shadow: 5px 10px #888888;
+    border-radius: 15px;
 }
 
 .navi {
 
-    margin:10px;
     width:60%;
     height: 95%;
-    margin: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2px;
+    margin-bottom: 2px;
     border-radius: 10px;
 }
 
@@ -37,13 +40,14 @@ input[type=text] {
     width:60%;
     margin: auto;
     box-shadow: 5px 10px #888888;
+    border-radius: 10px;
 }
 
 tr:nth-child(even) {background: #f6eeba}
 tr:nth-child(odd) {background: #6abfa5}
 
  table {
-     border-radius: 10px;
+     border-radius: 15px;
  }
 .puhdastd {
     background: #f6eeba
@@ -56,12 +60,15 @@ td {
 }
 th {
     border-radius: 5px;
+    background-color: #343641;
+    color: #f6eeba;
 }
 
 .namiska {
-    background-color: #6abfa5;
+    background-color: #343641;
     box-shadow: 1px 2px #888888;
     border-radius: 4px;
+    color: #f6eeba;
 
 }
 h2 {
@@ -86,7 +93,7 @@ li {
 li a {
     border-radius: 10px;
     display: block;
-    color: white;
+    color: #f6eeba;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -104,6 +111,19 @@ li a:hover {
     border-bottom: solid #343641;
     padding-bottom: 5px;
 }
+/* JOS haluamme piilottaa reply-laatikon, täällä on tarvittavat koodit
 .vastauslaatikko {
     display: none;
 }
+
+  <script>
+       function toggleReplyVisibility(event) {
+    var stopsToggle = event.target.firstElementChild;
+if (stopsToggle.style.display === "none") {
+    stopsToggle.style.display = "block";
+} else {
+      stopsToggle.style.display = "none";
+  }
+}
+</script>
+*/
