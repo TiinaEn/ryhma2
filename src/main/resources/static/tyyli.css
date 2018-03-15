@@ -5,6 +5,7 @@ body {
     background-position: center;
     background-size:100%;
     color: #343641;
+    font-family: "Palatino Linotype";
 }
 
 button {
@@ -47,7 +48,6 @@ tr:nth-child(even) {background: #f6eeba}
 tr:nth-child(odd) {background: #6abfa5}
 
  table {
-     border-collapse: collapse;
      width: 100%;
      border-radius: 15px;
  }
