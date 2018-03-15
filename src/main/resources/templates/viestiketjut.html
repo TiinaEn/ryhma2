@@ -45,7 +45,22 @@
                     <td th:text="${viesti.aikaleima}" style="width:16%"></td>
                     <td th:text="${viesti.kayttaja.nimimerkki}" style="width:16%"></td>
                     <td th:text="${viesti.teksti}" style="width:16%"></td>
-                   <td></t> <a th:href="@{'/viestiketjut/' + ${viesti.viestiketju}}">Syöksy keskusteluun!</a></td>
+
+                <td></t>
+
+                    <form action="#" th:action="@{/viestiketjut}" method="post">
+                        <input th:name="viestiketju" th:value="${viesti.viestiketju}"/>
+                        <input th:type="submit" value="Syöksy keskusteluun!" class="namiska"/>
+
+                    </form>
+
+
+                </td>
+
+
+
+
+
 
 
             </tr>
