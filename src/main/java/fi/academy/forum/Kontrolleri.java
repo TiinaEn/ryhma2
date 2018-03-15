@@ -60,12 +60,19 @@ public class Kontrolleri {
     @PostMapping("/lisaaviesti")
     public String lisaaViesti(@ModelAttribute Viesti viesti, Model model) {
         Optional<Kayttaja> kirjautunut = krepo.findByNimimerkki(viesti.getKayttaja().getNimimerkki());
-        viesti.setKayttaja(kirjautunut.get());
+        Kayttaja k;
+        if (kirjautunut.isPresent()) {
+            k = kirjautunut.get();
+        } else {
+            throw new RuntimeException("Kirjautumaton käyttäjä poistanut viestin!");
+        }
+        viesti.setKayttaja(k);
         repo.save(viesti);
         List<Viesti> viestilista = repo.etsiKaikkiAikajarjestyksessa();
+        model.addAttribute("kirjautunut", k);
         model.addAttribute("viestit", viestilista);
-        model.addAttribute("lisattava", new Viesti(kirjautunut.get()));
-        model.addAttribute("admin", kirjautunut.get().getAdminoikeus());
+        model.addAttribute("lisattava", new Viesti(k));
+        model.addAttribute("admin", k.getAdminoikeus());
 
         return "index";
 
@@ -128,35 +135,25 @@ public class Kontrolleri {
 
 
     @PostMapping("/poista")
-    public String poistaViesti(Viesti viesti, Model model) {
-//        System.out.println(id);
+    public String poistaViesti(Viesti viesti,Model model) {
+
 
         Optional<Kayttaja> kirjautunut = krepo.findByNimimerkki(viesti.getKayttaja().getNimimerkki());
-        viesti.setKayttaja(kirjautunut.get());
-        System.out.println("!!!!!!" + viesti.getId());
+        Kayttaja k;
+        if (kirjautunut.isPresent()) {
+            k = kirjautunut.get();
+        } else {
+            throw new RuntimeException("Kirjautumaton käyttäjä poistanut viestin!");
+        }
         repo.deleteById(viesti.getId());
-        /*model.addAttribute("viestit", repo.findAll());*/
+
         List<Viesti> viestilista = repo.etsiKaikkiAikajarjestyksessa();
         model.addAttribute("viestit", viestilista);
-        model.addAttribute("lisattava", new Viesti(kirjautunut.get()));
 
-        Kayttaja k = new Kayttaja();
-        int i = 0;
-        if (kirjautunut.get().getAdminoikeus() == 1) {
-            System.out.println("****************** jee");
-            k = kirjautunut.get();
-            i = 1;
-        } else {
-            Optional<Kayttaja> opt = krepo.findByAdminoikeus(1);
-            System.out.println("************" + opt);
-            if (opt.isPresent()) {
-                k = opt.get();
-                i = 0;
-            }
-        }
 
+        model.addAttribute("lisattava", new Viesti(k));
         model.addAttribute("kirjautunut", k);
-        model.addAttribute("admin", i);
+        model.addAttribute("admin", k.getAdminoikeus());
 
 
 

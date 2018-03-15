@@ -83,4 +83,11 @@ public class Kayttaja {
     public void setAdminoikeus(int adminoikeus) {
         this.adminoikeus = adminoikeus;
     }
+
+   /* @Override
+    public String toString() {
+        return "Kayttaja{" +
+                "nimimerkki='" + nimimerkki + '\'' +
+                '}';
+    }*/
 }

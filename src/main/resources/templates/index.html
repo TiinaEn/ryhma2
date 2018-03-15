@@ -68,8 +68,8 @@
 
 
             </form>
-            <form action="#" th:action="@{/poista}" method="post">
-                <input th:type="hidden" th:name="kayttaja.nimimerkki" th:value="${viesti.kayttaja.nimimerkki}"/>
+            <form action="#" th:action="@{/poista}" method="post" th:if="${kirjautunut}">
+                <input th:type="hidden" th:name="kayttaja.nimimerkki" th:value="${kirjautunut.nimimerkki}"/>
                 <input th:type="hidden" th:name="id" th:value="${viesti.id}"/>
                 <td th:if="${admin == 1}==true"><div><input th:type="submit" value="Poista" class="namiska"/></div></td>
                 <td th:if="${lisattava.kayttaja.nimimerkki == viesti.kayttaja.nimimerkki && admin != 1}==true"><div><input th:type="submit" value="Poista" class="namiska"/></div></td>
@@ -84,8 +84,9 @@
     <a href="/rekisterointi">Rekisteröidy tästä!</a>*</div>
 <div id="divi2">
     <span th:if="${admin != null}">
-    <form action="#" th:action="@{/lisaaviesti}" th:object="${lisattava}" method="post">
-        <div><input th:type="hidden" th:field="*{kayttaja.nimimerkki}"/></div>
+    <form action="#" th:action="@{/lisaaviesti}" th:object="${lisattava}" method="post" th:if="${kirjautunut}">
+        <!--<div><input th:type="hidden" th:field="*{kayttaja.nimimerkki}"/></div>-->
+        <input th:type="hidden" th:name="kayttaja.nimimerkki" th:value="${kirjautunut.nimimerkki}"/>
         <div><textarea th:field="*{teksti}" rows="10" cols="94" style="margin-left:2px; margin-bottom:2px;"/></div>
         <div><input th:type="submit" value="Lähetä viesti" style="margin-left:2px " class="namiska"/></div>
     </form>
