@@ -42,7 +42,6 @@
     <table style="width: 100%; ">
         <tr style="border: solid black; width:100%;"><th>Ajanhetki</th><th>Käyttäjä</th><th>Viesti</th><th>Vastaa</th><th>Poista</th></tr>
         <tr th:each="viesti: ${viestit}" style="height: 15px;">
-
             <form action="#" th:action="@{/reply}" th:object="${lisattava}" method="post">
                 <td th:text="${viesti.aikaleima}" style="width:16%"></td>
                 <td><a th:href="@{/kayttaja}+'?id='+${viesti.kayttaja.id}" style="text-decoration: none" th:text="${viesti.kayttaja.nimimerkki}"/></td>
