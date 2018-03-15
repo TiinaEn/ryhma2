@@ -56,12 +56,13 @@
     <div style="width: 100%; border-radius: 10px;">
 
         <table style="width: 100%; ">
-            <tr style="border: solid black; width:100%;"><th>Postausaika</th><th>Aloittaja</th><th>Viesti</th><th>Osoite</th></tr>
+            <tr style="border: solid black; width:100%;"><th>Postausaika</th><th>AP</th><th>Aihe</th><th></th></tr>
             <tr th:each="viesti: ${viestit}" style="height: 15px;">
-                    <td th:text="${viesti.aikaleima}" style="width:16%"></td>
-                    <td th:text="${viesti.kayttaja.nimimerkki}" style="width:16%"></td>
-                    <td th:text="${viesti.teksti}" style="width:16%"></td>
-                   <td></t> <a th:href="@{'/viestiketjut/' + ${viesti.viestiketju}}">Syöksy keskusteluun!</a></td>
+                    <td th:text="${viesti.aikaleima}" style="width:20%"></td>
+                    <td th:text="${viesti.kayttaja.nimimerkki}"></td>
+                    <td th:text="${viesti.otsikko}" style="width:65% "></td>
+
+                   <td></t> <a th:href="@{'/viestiketjut/' + ${viesti.viestiketju}}">keskusteluun!</a></td>
 
 
             </tr>
@@ -69,14 +70,21 @@
         </table>
 
     </div>
+    <div class="viivoitus">
+   <!-- <div th:if="${admin == null}" class="viivoitus">*Haluatko osallistua keskusteluun? <a href="/login">Kirjaudu sisään!</a> Tai jos et ole vielä käyttäjä
+        <a href="/rekisterointi">Rekisteröidy tästä!</a>*</div>
+    <div id="divi2">
+    <span th:if="${admin != null}">-->
 
     <form action="#" th:action="@{/lisaaviestiketju}" th:object="${lisattava}" method="post">
-        <div><input th:field="*{kayttaja.nimimerkki}"/></div>
-        <div><input th:field="*{otsikko}"style="margin-left:2px; margin-bottom:2px;"/></div>
-        <div><textarea th:field="*{teksti}" rows="10" cols="94" style="margin-left:2px; margin-bottom:2px;"/></div>
+        <div>Syötä käyttäjä: </br><input th:field="*{kayttaja.nimimerkki}"/></div>
+        <div>Syötä otsikko: </br><input th:field="*{otsikko}"style="margin-left:2px; margin-bottom:2px;"/></div>
+        <div>Syötä viesti: </br><textarea th:field="*{teksti}" rows="10" cols="94" style="margin-left:2px; margin-bottom:2px;"/></div>
         <div><input th:type="submit" value="Lähetä viestiketju" style="margin-left:2px " class="namiska"/></div>
     </form>
-
+    </span>
+    </div>
+</div>
 
 </div>
 </body>
