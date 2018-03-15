@@ -58,7 +58,7 @@
         <table style="width: 100%; ">
             <tr style="border: solid black; width:100%;"><th>Postausaika</th><th>AP</th><th>Aihe</th><th></th></tr>
             <tr th:each="viesti: ${viestit}" style="height: 15px;">
-                
+
                     <td th:text="${viesti.aikaleima}" style="width:16%"></td>
                     <td th:text="${viesti.kayttaja.nimimerkki}" style="width:16%"></td>
                     <td th:text="${viesti.teksti}" style="width:16%"></td>
