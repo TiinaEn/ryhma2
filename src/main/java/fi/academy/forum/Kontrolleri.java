@@ -51,7 +51,7 @@ public class Kontrolleri {
 
                 model.addAttribute("kirjautunut", kirjautunut.get());
               /*  model.addAttribute("viestit", repo.findAll());*/
-                List<Viesti> viestilista = repo.etsiKaikkiAikajarjestyksessa();
+                List<Viesti> viestilista = repo.etsiKaikkiViestiketjut();
                 model.addAttribute("viestit", viestilista);
                 model.addAttribute("lisattava", new Viesti(kirjautunut.get()));
                 model.addAttribute("admin", kirjautunut.get().getAdminoikeus());
