@@ -8,6 +8,7 @@ import java.util.Date;
 public class Viesti {
     @Id @GeneratedValue
     private Integer id;
+    @Lob        //muuttaa String tyypin tietokannassa varchar:sta text-tyypiksi
     private String teksti;
     @Transient
     private Viesti vastattuviesti;
