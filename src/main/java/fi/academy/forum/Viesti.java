@@ -8,9 +8,13 @@ import java.util.Date;
 public class Viesti {
     @Id @GeneratedValue
     private Integer id;
+    @Lob        //muuttaa String tyypin tietokannassa varchar:sta text-tyypiksi
     private String teksti;
     @Transient
     private Viesti vastattuviesti;
+    private Integer viestiketjunAloittaja=0;
+
+
     private Integer viestiketju;
 
 
@@ -28,6 +32,13 @@ public class Viesti {
     }
 
     public Viesti(String teksti, Kayttaja kayttaja, Integer viestiketju) {
+        this.teksti = teksti;
+        this.kayttaja = kayttaja;
+        this.viestiketju = viestiketju;
+    }
+
+    public Viesti(String teksti, Kayttaja kayttaja, Integer viestiketju, Integer viestiketjunAloittaja) {
+        this.viestiketjunAloittaja = viestiketjunAloittaja;
         this.teksti = teksti;
         this.kayttaja = kayttaja;
         this.viestiketju = viestiketju;
@@ -105,5 +116,14 @@ public class Viesti {
 
     public void setViestiketju(Integer viestiketju) {
         this.viestiketju = viestiketju;
+    }
+
+
+    public Integer getViestiketjunAloittaja() {
+        return viestiketjunAloittaja;
+    }
+
+    public void setViestiketjunAloittaja(Integer viestiketjunAloittaja) {
+        this.viestiketjunAloittaja = viestiketjunAloittaja;
     }
 }

@@ -3,9 +3,7 @@ package fi.academy.forum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -26,6 +24,23 @@ public class Kontrolleri {
         model.addAttribute("viestit", viestilista);
         model.addAttribute("lisattava", new Viesti());
         return "index";
+    }
+
+    @GetMapping("/viestiketjut/{id}")
+    public String listaaViestitViestiketjussa (Model model, @PathVariable("id")Integer id) {
+        List<Viesti> viestilista = repo.etsiKaikkiAikajarjestyksessaID(id);
+        model.addAttribute("viestit", viestilista);
+        model.addAttribute("lisattava", new Viesti());
+        return "index";
+    }
+
+    @GetMapping("/viestiketjut")
+    public String listaaViestiketjut (Model model) {
+        /*model.addAttribute("viestit", repo.findAll());*/
+        List<Viesti> viestiLista = repo.etsiKaikkiViestiketjut();
+        model.addAttribute("viestit", viestiLista);
+        model.addAttribute("lisattava", new Viesti());
+        return "viestiketjut";
     }
 
     @PostMapping("/")
@@ -75,6 +90,23 @@ public class Kontrolleri {
         model.addAttribute("admin", k.getAdminoikeus());
 
         return "index";
+
+    }
+
+    @PostMapping("/lisaaviestiketju")
+    public String lisaaViestiketju(@ModelAttribute Viesti viesti, Model model) {
+        Optional<Kayttaja> kirjautunut = krepo.findByNimimerkki(viesti.getKayttaja().getNimimerkki());
+        viesti.setKayttaja(kirjautunut.get());
+        viesti.setViestiketjunAloittaja(1);
+        Integer dumppi = repo.etsiViimeisinViestiketjuId();
+        viesti.setViestiketju(dumppi+1);
+        repo.save(viesti);
+        List<Viesti> viestilista = repo.etsiKaikkiAikajarjestyksessa();
+        model.addAttribute("viestit", viestilista);
+        model.addAttribute("lisattava", new Viesti(kirjautunut.get()));
+        model.addAttribute("admin", kirjautunut.get().getAdminoikeus());
+
+        return "viestiketjut";
 
     }
 
@@ -128,7 +160,7 @@ public class Kontrolleri {
             return "varattu";
         }
         model.addAttribute("viesti", "Käyttäjää ei löydy!");
-        model.addAttribute("luku", 2);
+        model.addAttribute("luku", 3);
         return "varattu";
     }
 
