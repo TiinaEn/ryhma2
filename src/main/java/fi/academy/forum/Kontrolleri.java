@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+// Tässä kontrollerissa ovat kirjautumiseen ja viestien lähettämiseen liittyvät metodit
 @Controller
 public class Kontrolleri {
-    //Kayttaja kirjautunut;
 
     @Autowired
     private ViestiRepositorio repo;
@@ -49,9 +49,11 @@ public class Kontrolleri {
         System.out.println("!!!!!!!!!!!!!!!!!!!!" + kirjautunut);
         viesti.setKayttaja(kirjautunut.get());
 
+
+
                 model.addAttribute("kirjautunut", kirjautunut.get());
               /*  model.addAttribute("viestit", repo.findAll());*/
-                List<Viesti> viestilista = repo.etsiKaikkiAikajarjestyksessa();
+                List<Viesti> viestilista = repo.etsiKaikkiViestiketjut();
                 model.addAttribute("viestit", viestilista);
                 model.addAttribute("lisattava", new Viesti(kirjautunut.get()));
                 model.addAttribute("admin", kirjautunut.get().getAdminoikeus());
@@ -69,6 +71,7 @@ public class Kontrolleri {
 //        model.addAttribute("admin", kirjautunut.get().getAdminoikeus());
 
 
+
     }
 
 
@@ -82,6 +85,7 @@ public class Kontrolleri {
             throw new RuntimeException("Kirjautumaton käyttäjä poistanut viestin!");
         }
         viesti.setKayttaja(k);
+        k.setViestienMaara((k.getViestienMaara()+1));
         repo.save(viesti);
         List<Viesti> viestilista = repo.etsiKaikkiAikajarjestyksessa();
         model.addAttribute("kirjautunut", k);
@@ -96,33 +100,47 @@ public class Kontrolleri {
     @PostMapping("/lisaaviestiketju")
     public String lisaaViestiketju(@ModelAttribute Viesti viesti, Model model) {
         Optional<Kayttaja> kirjautunut = krepo.findByNimimerkki(viesti.getKayttaja().getNimimerkki());
-        viesti.setKayttaja(kirjautunut.get());
+        Kayttaja k;
+        if (kirjautunut.isPresent()) {
+            k = kirjautunut.get();
+        } else {
+            throw new RuntimeException("Kirjautumaton käyttäjä poistanut viestin!");
+        }
+        viesti.setKayttaja(k);
         viesti.setViestiketjunAloittaja(1);
         Integer dumppi = repo.etsiViimeisinViestiketjuId();
         viesti.setViestiketju(dumppi+1);
+        k.setViestienMaara(k.getViestienMaara()+1);
         repo.save(viesti);
         List<Viesti> viestilista = repo.etsiKaikkiAikajarjestyksessa();
         model.addAttribute("viestit", viestilista);
-        model.addAttribute("lisattava", new Viesti(kirjautunut.get()));
-        model.addAttribute("admin", kirjautunut.get().getAdminoikeus());
+        model.addAttribute("lisattava", new Viesti(k));
+        model.addAttribute("admin", k.getAdminoikeus());
 
         return "viestiketjut";
-
     }
 
     @PostMapping("/reply")
     public String replausta(@ModelAttribute Viesti viesti, Model model) {
+
         Optional<Kayttaja> kirjautunut = krepo.findByNimimerkki(viesti.getKayttaja().getNimimerkki());
-        viesti.setKayttaja(kirjautunut.get());
+        Kayttaja k;
+        if (kirjautunut.isPresent()) {
+            k = kirjautunut.get();
+        } else {
+            throw new RuntimeException("Kirjautumaton käyttäjä poistanut viestin!");
+        }
+        viesti.setKayttaja(k);
         Viesti vastattu = repo.findById(viesti.getVastattuviesti().getId()).get();
         viesti.setTeksti("|| " + vastattu.getKayttaja().getNimimerkki() + ": '" + vastattu.getTeksti() + "' ||" + viesti.getTeksti() );
+        k.setViestienMaara(k.getViestienMaara()+1);
         repo.save(viesti);
-       /* model.addAttribute("viestit", repo.findAll());*/
+
         List<Viesti> viestilista = repo.etsiKaikkiAikajarjestyksessa();
         model.addAttribute("viestit", viestilista);
-        model.addAttribute("lisattava", new Viesti(kirjautunut.get()));
-        model.addAttribute("kirjautunut", kirjautunut.get());
-        model.addAttribute("admin", kirjautunut.get().getAdminoikeus());
+        model.addAttribute("lisattava", new Viesti(k));
+        model.addAttribute("kirjautunut", k);
+        model.addAttribute("admin", k.getAdminoikeus());
         return "index";
     }
 
@@ -134,41 +152,44 @@ public class Kontrolleri {
         return "login";
     }
 
-
     @PostMapping("/kirjaudu")
     public String kirjaudu(Kayttaja kayttaja, Model model) {
+        // Tarkistetaan, ettei nimimerkki tai salasana ole tyhjä
         if (kayttaja.getNimimerkki().isEmpty() || kayttaja.getSalasana().isEmpty()) {
             model.addAttribute("viesti", "Syötä sekä nimimerkki että salasana!");
             model.addAttribute("luku", 2);
-            return "varattu";
+            return "varattu"; // Ohjataan virhesivulle
         }
         Optional<Kayttaja> kirjautunut = krepo.findByNimimerkki(kayttaja.getNimimerkki());
 
         if (kirjautunut.isPresent()) {
+            // Tarkistetaan, vastaako annettu salasana tietokannasta löytyvää salasanaa
             if (kirjautunut.get().getSalasana().equals(kayttaja.getSalasana())) {
 
                 model.addAttribute("kirjautunut", kirjautunut.get());
+
+
                 /*model.addAttribute("viestit", repo.findAll());*/
-                List<Viesti> viestilista = repo.etsiKaikkiAikajarjestyksessa();
+                List<Viesti> viestilista = repo.etsiKaikkiViestiketjut();
+
                 model.addAttribute("viestit", viestilista);
                 model.addAttribute("lisattava", new Viesti(kayttaja));
                 model.addAttribute("admin", kirjautunut.get().getAdminoikeus());
-                return "viestiketjut";
+                return "index";
             }
             model.addAttribute("viesti", "Väärä salasana!");
             model.addAttribute("luku", 2);
-            return "varattu";
+            return "varattu"; // Ohjataan virhesivulle
         }
         model.addAttribute("viesti", "Käyttäjää ei löydy!");
         model.addAttribute("luku", 3);
-        return "varattu";
+        return "varattu"; // Ohjataan virhesivulle
     }
 
 
 
     @PostMapping("/poista")
     public String poistaViesti(Viesti viesti,Model model) {
-
 
         Optional<Kayttaja> kirjautunut = krepo.findByNimimerkki(viesti.getKayttaja().getNimimerkki());
         Kayttaja k;
@@ -177,18 +198,14 @@ public class Kontrolleri {
         } else {
             throw new RuntimeException("Kirjautumaton käyttäjä poistanut viestin!");
         }
+        k.setViestienMaara(k.getViestienMaara()-1);
         repo.deleteById(viesti.getId());
 
         List<Viesti> viestilista = repo.etsiKaikkiAikajarjestyksessa();
         model.addAttribute("viestit", viestilista);
-
-
         model.addAttribute("lisattava", new Viesti(k));
         model.addAttribute("kirjautunut", k);
         model.addAttribute("admin", k.getAdminoikeus());
-
-
-
         return "index";
     }
 
@@ -198,8 +215,4 @@ public class Kontrolleri {
         //model.addAttribute("lisattava", new Kayttaja());
         return "redirect:";
     }
-
-
-
 }
-

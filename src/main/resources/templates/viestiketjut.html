@@ -3,7 +3,7 @@
 <head>
     <link rel="stylesheet" type="text/css" href="../tyyli.css">
     <meta charset="UTF-8"/>
-    <title>Title</title>
+    <title>Viestiketjut</title>
     <link rel="shortcut icon" type="image/png" href="../favi.png"/>
 
 </head>
@@ -90,7 +90,7 @@
     <span th:if="${admin != null}">-->
 
     <form action="#" th:action="@{/lisaaviestiketju}" th:object="${lisattava}" method="post">
-        <div>Syötä käyttäjä: </br><input th:field="*{kayttaja.nimimerkki}"/></div>
+        <div></br><input th:type="hidden" th:field="*{kayttaja.nimimerkki}"/></div>
         <div>Syötä otsikko: </br><input th:field="*{otsikko}"style="margin-left:2px; margin-bottom:2px;"/></div>
         <div>Syötä viesti: </br><textarea th:field="*{teksti}" rows="10" cols="94" style="margin-left:2px; margin-bottom:2px;"/></div>
         <div><input th:type="submit" value="Lähetä viestiketju" style="margin-left:2px " class="namiska"/></div>
