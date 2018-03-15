@@ -49,13 +49,29 @@ public class Kontrolleri {
         System.out.println("!!!!!!!!!!!!!!!!!!!!" + kirjautunut);
         viesti.setKayttaja(kirjautunut.get());
 
-        model.addAttribute("kirjautunut", kirjautunut.get());
-        List<Viesti> viestilista = repo.etsiKaikkiAikajarjestyksessa();
-        model.addAttribute("viestit", viestilista);
-        model.addAttribute("lisattava", new Viesti(kirjautunut.get()));
-        model.addAttribute("admin", kirjautunut.get().getAdminoikeus());
 
-        return "viestiketjut";
+
+                model.addAttribute("kirjautunut", kirjautunut.get());
+              /*  model.addAttribute("viestit", repo.findAll());*/
+                List<Viesti> viestilista = repo.etsiKaikkiViestiketjut();
+                model.addAttribute("viestit", viestilista);
+                model.addAttribute("lisattava", new Viesti(kirjautunut.get()));
+                model.addAttribute("admin", kirjautunut.get().getAdminoikeus());
+                return "viestiketjut";
+
+
+
+//        Optional<Kayttaja> kirjautunut = krepo.findByNimimerkki(viesti.getKayttaja().getNimimerkki());
+//        viesti.setKayttaja(kirjautunut.get());
+//        System.out.println("!!!!!!" + viesti.getId());
+//        repo.deleteById(viesti.getId());
+//        model.addAttribute("viestit", repo.findAll());
+//        model.addAttribute("lisattava", new Viesti(kirjautunut.get()));
+//        model.addAttribute("kirjautunut", kirjautunut.get());
+//        model.addAttribute("admin", kirjautunut.get().getAdminoikeus());
+
+
+
     }
 
 
@@ -151,7 +167,11 @@ public class Kontrolleri {
             if (kirjautunut.get().getSalasana().equals(kayttaja.getSalasana())) {
 
                 model.addAttribute("kirjautunut", kirjautunut.get());
-                List<Viesti> viestilista = repo.etsiKaikkiAikajarjestyksessa();
+
+
+                /*model.addAttribute("viestit", repo.findAll());*/
+                List<Viesti> viestilista = repo.etsiKaikkiViestiketjut();
+
                 model.addAttribute("viestit", viestilista);
                 model.addAttribute("lisattava", new Viesti(kayttaja));
                 model.addAttribute("admin", kirjautunut.get().getAdminoikeus());
