@@ -58,15 +58,15 @@
             <tr style="border: solid black; width:100%;"><th>Postausaika</th><th>AP</th><th>Aihe</th><th></th></tr>
             <tr th:each="viesti: ${viestit}" style="height: 15px;">
                 
-                    <td th:text="${viesti.aikaleima}" style="width:16%"></td>
-                    <td th:text="${viesti.kayttaja.nimimerkki}" style="width:16%"></td>
+                    <td th:text="${viesti.aikaleima}" style="width:20%"></td>
+                    <td th:text="${viesti.kayttaja.nimimerkki}"></td>
                     <td th:text="${viesti.otsikko}"></td>
 
                 <td></t>
 
                     <form action="#" th:action="@{/viestiketjut}" method="post">
-                        <input th:name="viestiketju" th:value="${viesti.viestiketju}"/>
-                        <input th:type="submit" value="Syöksy keskusteluun!" class="namiska"/>
+                        <input style="display:none" th:name="viestiketju" th:value="${viesti.viestiketju}"/>
+                        <input th:type="submit" value="Keskustelemaan!" class="namiska"/>
 
                     </form>
                 </td>
