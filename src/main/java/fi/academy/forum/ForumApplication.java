@@ -20,9 +20,9 @@ public class ForumApplication {
 			krepo.save(admin);
 			Kayttaja user = new Kayttaja("user", "user");
 			krepo.save(user);
-			Viesti v1 = new Viesti("terve", admin, 1, 1);
+			Viesti v1 = new Viesti("terve", admin, 1, 1, "Ensimmäinen keskustelu koirista");
 			Viesti v2 = new Viesti("Halloota!", user, 1);
-			Viesti v3 = new Viesti("Halloota! Viestiketju2", user, 2, 1);
+			Viesti v3 = new Viesti("Halloota! Viestiketju2", user, 2, 1, "Toinen keskustelu kissoista");
 			vrepo.save(v1);
 			vrepo.save(v2);
 			vrepo.save(v3);

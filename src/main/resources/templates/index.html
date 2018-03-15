@@ -95,7 +95,8 @@
 
 </div>
     <br/>
-<div th:if="${admin == null}" class="viivoitus">*Haluatko osallistua keskusteluun? <a href="/login">Kirjaudu sisään!</a> Tai jos et ole vielä käyttäjä
+        <div class=viivoitus">
+<div th:if="${admin == null}">*Haluatko osallistua keskusteluun? <a href="/login">Kirjaudu sisään!</a> Tai jos et ole vielä käyttäjä
     <a href="/rekisterointi">Rekisteröidy tästä!</a>*</div>
 <div id="divi2">
     <span th:if="${admin != null}">
@@ -106,6 +107,7 @@
         <div><input th:type="submit" value="Lähetä viesti" style="margin-left:2px " class="namiska"/></div>
     </form>
     </span>
+</div>
 </div>
 </div>
 </body>
