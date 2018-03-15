@@ -61,7 +61,7 @@
                 
                     <td th:text="${viesti.aikaleima}" style="width:16%"></td>
                     <td th:text="${viesti.kayttaja.nimimerkki}" style="width:16%"></td>
-                    <td th:text="${viesti.otsikko}" style="width:16%"></td>
+                    <td th:text="${viesti.otsikko}"></td>
 
                 <td></t>
 
@@ -80,10 +80,10 @@
 
     </div>
     <div class="viivoitus">
-   <!-- <div th:if="${admin == null}" class="viivoitus">*Haluatko osallistua keskusteluun? <a href="/login">Kirjaudu sisään!</a> Tai jos et ole vielä käyttäjä
+   <div th:if="${admin == null}">*Haluatko osallistua keskusteluun? <a href="/login">Kirjaudu sisään!</a> Tai jos et ole vielä käyttäjä
         <a href="/rekisterointi">Rekisteröidy tästä!</a>*</div>
     <div id="divi2">
-    <span th:if="${admin != null}">-->
+    <span th:if="${admin != null}">
 
     <form action="#" th:action="@{/lisaaviestiketju}" th:object="${lisattava}" method="post">
         <div></br><input th:type="hidden" th:field="*{kayttaja.nimimerkki}"/></div>
