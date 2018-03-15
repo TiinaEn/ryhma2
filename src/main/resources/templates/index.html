@@ -120,6 +120,8 @@
     <form action="#" th:action="@{/lisaaviesti}" th:object="${lisattava}" method="post" th:if="${kirjautunut}">
         <!--<div><input th:type="hidden" th:field="*{kayttaja.nimimerkki}"/></div>-->
         <input th:type="hidden" th:name="kayttaja.nimimerkki" th:value="${kirjautunut.nimimerkki}"/>
+        <!-- Ehkä toimii, ehkä ei, yrittää lisätä viestiketjun ID:n, jotta postaukset menevät oikeaan ketjuun -->
+        <input th:type="hidden" th:field="*{viestiketju}"/>
         <div><textarea th:field="*{teksti}" rows="10" cols="94" style="margin-left:2px; margin-bottom:2px;"/></div>
         <div><input th:type="submit" value="Lähetä viesti" style="margin-left:2px " class="namiska"/></div>
     </form>

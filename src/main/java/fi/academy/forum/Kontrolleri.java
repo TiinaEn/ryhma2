@@ -87,13 +87,13 @@ public class Kontrolleri {
         viesti.setKayttaja(k);
         k.setViestienMaara((k.getViestienMaara()+1));
         repo.save(viesti);
-        List<Viesti> viestilista = repo.etsiKaikkiAikajarjestyksessa();
+        List<Viesti> viestilista = repo.etsiKaikkiAikajarjestyksessaID(viesti.getViestiketju());
         model.addAttribute("kirjautunut", k);
         model.addAttribute("viestit", viestilista);
         model.addAttribute("lisattava", new Viesti(k));
         model.addAttribute("admin", k.getAdminoikeus());
 
-        return "index";
+        return "viestiketjut";
 
     }
 
