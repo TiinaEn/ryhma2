@@ -86,6 +86,23 @@ public class Kontrolleri {
 
     }
 
+    @PostMapping("/lisaaviestiketju")
+    public String lisaaViestiketju(@ModelAttribute Viesti viesti, Model model) {
+        Optional<Kayttaja> kirjautunut = krepo.findByNimimerkki(viesti.getKayttaja().getNimimerkki());
+        viesti.setKayttaja(kirjautunut.get());
+        viesti.setViestiketjunAloittaja(1);
+        Integer dumppi = repo.etsiViimeisinViestiketjuId();
+        viesti.setViestiketju(dumppi+1);
+        repo.save(viesti);
+        List<Viesti> viestilista = repo.etsiKaikkiAikajarjestyksessa();
+        model.addAttribute("viestit", viestilista);
+        model.addAttribute("lisattava", new Viesti(kirjautunut.get()));
+        model.addAttribute("admin", kirjautunut.get().getAdminoikeus());
+
+        return "viestiketjut";
+
+    }
+
     @PostMapping("/reply")
     public String replausta(@ModelAttribute Viesti viesti, Model model) {
         Optional<Kayttaja> kirjautunut = krepo.findByNimimerkki(viesti.getKayttaja().getNimimerkki());

@@ -16,4 +16,7 @@ public interface ViestiRepositorio extends CrudRepository<Viesti, Integer> {
     @Query("select v from Viesti v where v.viestiketju= :id order by v.id asc")
     List<Viesti> etsiKaikkiAikajarjestyksessaID(@Param("id") Integer id);
 
+    @Query("select max(v.viestiketju) from Viesti v")
+    Integer etsiViimeisinViestiketjuId();
+
 }

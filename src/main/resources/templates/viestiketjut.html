@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <link rel="stylesheet" type="text/css" href="tyyli.css">
+    <link rel="stylesheet" type="text/css" href="../tyyli.css">
     <meta charset="UTF-8"/>
     <title>Title</title>
-    <link rel="shortcut icon" type="image/png" href="/favi.png"/>
+    <link rel="shortcut icon" type="image/png" href="../favi.png"/>
 
 </head>
 <body>
 <div class="banner">
-    <img src="banneri.png" alt="Banneri" align="center" width="100%" style="border-radius:15px">
+    <img src="../banneri.png" alt="Banneri" align="center" width="100%" style="border-radius:15px">
 </div>
 
 
@@ -53,6 +53,13 @@
         </table>
 
     </div>
+
+    <form action="#" th:action="@{/lisaaviestiketju}" th:object="${lisattava}" method="post">
+        <div><input th:field="*{kayttaja.nimimerkki}"/></div>
+        <div><input th:field="*{otsikko}"style="margin-left:2px; margin-bottom:2px;"/></div>
+        <div><textarea th:field="*{teksti}" rows="10" cols="94" style="margin-left:2px; margin-bottom:2px;"/></div>
+        <div><input th:type="submit" value="Lähetä viestiketju" style="margin-left:2px " class="namiska"/></div>
+    </form>
 
 
 </div>
