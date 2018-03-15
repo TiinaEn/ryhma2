@@ -74,6 +74,13 @@
             <input type="submit" value="Rekisteröidy käyttäjäksi">
         </form>
     </div>
+
+    <div th:if="${luku} == 4">
+        <form th:action="@{/login}">
+            <input type="text" value="Kerro käyttäjätunnuksesi">
+            <input type="submit" value="Lähetä">
+        </form>
+    </div>
 </div>
 </body>
 </html>

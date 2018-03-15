@@ -3,7 +3,7 @@
 <head>
     <link rel="stylesheet" type="text/css" href="../tyyli.css">
     <meta charset="UTF-8"/>
-    <title>Title</title>
+    <title>Etusivu</title>
     <link rel="shortcut icon" type="image/png" href="../favi.png"/>
 
 </head>
@@ -30,10 +30,10 @@
             </li>
             <li>
             <span th:if="${admin != null}">
-                <form th:action="@{/profiili}">
-                    <input th:type="submit" value="PROFIILI" class="nappi"/>
-                </form>
-        </span>
+                  <form th:action="@{/kayttaja}">
+                    <input th:type="submit" value="PROFIILI"/>
+                    <input th:type="hidden" th:name="id" th:value="${kirjautunut.id}"/>
+                  </form></span>
             </li>
             <li>
             <span th:if="${admin == null}">

@@ -4,7 +4,7 @@
     <link rel="stylesheet" type="text/css" href="tyyli.css">
 
     <meta charset="UTF-8"/>
-    <title>Title</title>
+    <title>Kirjaudu</title>
     <link rel="shortcut icon" type="image/png" href="/favi.png"/>
 </head>
 <body>
@@ -34,7 +34,7 @@
         <div>Salasana:<br/> <input type="password" th:field="*{salasana}"/></div>
         <div><input th:type="submit" value="Kirjaudu sisään" class="namiska" style="padding-top:2px;"/></div>
     </form>
-    <a href
+    <p><a th:href="@{/salasana}">Unohtuiko salasana?</a></p>
 </div>
 </div>
 </body>
