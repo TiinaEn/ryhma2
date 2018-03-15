@@ -15,7 +15,6 @@ public class Kayttaja {
     private String sahkoposti;
     private Integer adminoikeus;
 
-
     public Kayttaja(String nimimerkki, String salasana) {
         this.nimimerkki = nimimerkki;
         this.salasana = salasana;
@@ -83,11 +82,4 @@ public class Kayttaja {
     public void setAdminoikeus(int adminoikeus) {
         this.adminoikeus = adminoikeus;
     }
-
-   /* @Override
-    public String toString() {
-        return "Kayttaja{" +
-                "nimimerkki='" + nimimerkki + '\'' +
-                '}';
-    }*/
 }
