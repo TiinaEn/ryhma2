@@ -58,7 +58,7 @@
 
         <tr th:each="viesti: ${viestit}" style="height: 15px;">
             <form action="#" th:action="@{/reply}" th:object="${lisattava}" method="post">
-                <td th:text="${viesti.aikaleima}" style="width:16%"></td>
+                <td th:text="${viesti.aikaleima}" style="width:20%"></td>
                 <td><a th:href="@{/kayttaja}+'?id='+${viesti.kayttaja.id}" style="text-decoration: none" th:text="${viesti.kayttaja.nimimerkki}"/></td>
                 <td style="display:none" th:text="${viesti.id}"></td>
                 <td th:text="${viesti.teksti}" style="width: 55%">
@@ -95,7 +95,7 @@
 
 </div>
     <br/>
-        <div class=viivoitus">
+        <div class="viivoitus">
 <div th:if="${admin == null}">*Haluatko osallistua keskusteluun? <a href="/login">Kirjaudu sisään!</a> Tai jos et ole vielä käyttäjä
     <a href="/rekisterointi">Rekisteröidy tästä!</a>*</div>
 <div id="divi2">
@@ -110,5 +110,6 @@
 </div>
 </div>
 </div>
+
 </body>
 </html>
