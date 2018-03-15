@@ -28,9 +28,17 @@ public class Kontrolleri {
 
     @PostMapping("/viestiketjut")
     public String listaaViestitViestiketjussa (Model model, Viesti viesti) {
+        Kayttaja lomakkeeltaTullutKirjautunut = viesti.getKayttaja();
+        Optional<Kayttaja> optkirjautunut = lomakkeeltaTullutKirjautunut != null ? krepo.findByNimimerkki(lomakkeeltaTullutKirjautunut.getNimimerkki()) : Optional.empty();
+        Kayttaja kirjautunut = null;
+        if(optkirjautunut.isPresent()) {
+            kirjautunut = optkirjautunut.get();
+        }
         List<Viesti> viestilista = repo.etsiKaikkiAikajarjestyksessaID(viesti.getViestiketju());
         model.addAttribute("viestit", viestilista);
-        model.addAttribute("lisattava", new Viesti());
+        model.addAttribute("lisattava", new Viesti(kirjautunut));
+        model.addAttribute("kirjautunut", kirjautunut);
+        model.addAttribute("admin", kirjautunut!=null?kirjautunut.getAdminoikeus():null);
         return "index";
     }
 

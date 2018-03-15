@@ -52,6 +52,7 @@
         <table style="width: 100%; ">
             <tr style="border: solid black; width:100%;"><th>Postausaika</th><th>AP</th><th>Aihe</th><th></th></tr>
             <tr th:each="viesti: ${viestit}" style="height: 15px;">
+
                 
                     <td th:text="${viesti.aikaleima}" style="width:20%"></td>
                     <td th:text="${viesti.kayttaja.nimimerkki}"></td>
@@ -60,8 +61,13 @@
                 <td></t>
 
                     <form action="#" th:action="@{/viestiketjut}" method="post">
-                        <input style="display:none" th:name="viestiketju" th:value="${viesti.viestiketju}"/>
+                        <input th:name="viestiketju" th:value="${viesti.viestiketju}"/>
+
+                        <input th:name="kayttaja.nimimerkki" th:value="${kayttaja}?${kayttaja.nimimerkki}:''"/>
+
+                        <!--<input th:name="nimimerkki" th:value="${viesti.kayttaja.nimimerkki}"/>-->
                         <input th:type="submit" value="Keskustelemaan!" class="namiska"/>
+
 
                     </form>
                 </td>
