@@ -13,8 +13,16 @@
 </div>
 
     <div class="navi"><ul>
-        <li><a href="/">Keskustelupalsta</a></li>
-        <li><a href="/rekisterointi">rekisteröinti</a></li>
+        <li>
+            <form th:action="@{/}">
+            <input th:type="submit" value="KESKUSTELUPALSTA" class="nappi"/>
+            </form>
+       </li>
+        <li>
+            <form th:action="@{/rekisterointi}">
+            <input th:type="submit" value="REKISTERÖIDY" class="nappi"/>
+            </form>
+        </li>
     </ul></div>
 
 

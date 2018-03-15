@@ -26,26 +26,34 @@
                 </form>
 
             </li>
+            <li>
             <span th:if="${admin != null}">
                 <form th:action="@{/profiili}">
-            <input th:type="submit" value="PROFIILI"/>
-        </form>
+                    <input th:type="submit" value="PROFIILI" class="nappi"/>
+                </form>
         </span>
+            </li>
+            <li>
             <span th:if="${admin == null}">
-                       <form th:action="@{/login}">
-            <input th:type="submit" value="LOGIN"/>
-        </form>
+                <form th:action="@{/login}">
+                    <input  th:type="submit" value="LOGIN" class="nappi"/>
+                </form>
         </span>
+            </li>
+            <li>
             <span th:unless="${admin == null}">
-                       <form th:action="@{/logout}">
-            <input th:type="submit" value="LOGOUT"/>
-        </form>
+                <form th:action="@{/logout}">
+                    <input th:type="submit" value="LOGOUT" class="nappi"/>
+                </form>
         </span>
+            </li>
+            <li>
             <span th:if="${admin == null}">
-                       <form th:action="@{/rekisterointi}">
-            <input th:type="submit" value="REKISTERÖIDY"/>
-        </form>
+                <form th:action="@{/rekisterointi}">
+                    <input th:type="submit" value="REKISTERÖIDY" class="nappi"/>
+                </form>
         </span>
+            </li>
 
         </ul></div>
     <div class="content">
