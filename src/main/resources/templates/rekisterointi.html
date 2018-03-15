@@ -14,13 +14,18 @@
 
     <div class="navi"><ul>
         <li>
-            <form th:action="@{/}">
+            <form th:action="@{/}"th:object="${lisattava}">
                 <input th:type="submit" value="KESKUSTELUPALSTA" class="nappi"/>
             </form>
         </li>
+<!--        <li>
+            <form th:action="@{/}" th:object="${lisattava}">
+                <input th:type="submit" value="HOME" class="nappi"/>
+            </form>
+        </li>-->
         <li>
             <form th:action="@{/login}">
-                <input th:type="submit" value="LOGIN" class="nappi"/>
+                <input th:type="submit" value="KIRJAUDU SISÄÄN" class="nappi"/>
             </form>
         </li>
     </ul></div>

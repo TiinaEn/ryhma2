@@ -17,15 +17,21 @@
 
         <ul>
 
-            <li>
+<!--            <li>
 
                 <form action="#" th:action="@{/}" th:object="${lisattava}" method="post">
-                    <!--<input th:name="kayttaja.nimimerkki" th:value="*{kayttaja.nimimerkki}"/>-->
+                    &lt;!&ndash;<input th:name="kayttaja.nimimerkki" th:value="*{kayttaja.nimimerkki}"/>&ndash;&gt;
 
-                    <!-- TÄMÄ HALUTAAN OIKEAAN YLÄKULMAAN NIIN TIEDETÄÄN KUKA ON KIRJAUTUNEENA -->
-                    <!--<input th:text="'Kirjautuneena:' + *{kayttaja.nimimerkki}"/>-->
+                    &lt;!&ndash; TÄMÄ HALUTAAN OIKEAAN YLÄKULMAAN NIIN TIEDETÄÄN KUKA ON KIRJAUTUNEENA &ndash;&gt;
+                    &lt;!&ndash;<input th:text="'Kirjautuneena:' + *{kayttaja.nimimerkki}"/>&ndash;&gt;
                     <input th:type="submit" value="HOME" class="nappi"/>
                 </form>
+
+            <li>-->
+                <form action="#" th:action="@{/}" th:object="${lisattava}" method="post">
+                    <input th:type="submit" value="KESKUSTELUPALSTA" class="nappi"/>
+                </form>
+            </li>
 
             </li>
             <li>
@@ -38,14 +44,14 @@
             <li>
             <span th:if="${admin == null}">
                 <form th:action="@{/login}">
-                    <input  th:type="submit" value="LOGIN" class="nappi"/>
+                    <input  th:type="submit" value="KIRJAUDU SISÄÄN" class="nappi"/>
                 </form>
         </span>
             </li>
             <li>
             <span th:unless="${admin == null}">
                 <form th:action="@{/logout}">
-                    <input th:type="submit" value="LOGOUT" class="nappi"/>
+                    <input th:type="submit" value="KIRJAUDU ULOS" class="nappi"/>
                 </form>
         </span>
             </li>
