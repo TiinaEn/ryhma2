@@ -95,12 +95,12 @@ ul {
     box-shadow: 5px 10px #888888;
 }
 
-li {
+nappi {
     float: left;
     border-radius: 10px;
 }
 
-li a {
+nappi a {
     border-radius: 10px;
     display: block;
     color: #f6eeba;
@@ -110,7 +110,7 @@ li a {
 }
 
 /* Change the link color to #111 (black) on hover */
-li a:hover {
+nappi a:hover {
     border-radius: 10px;
     background-color: #6abfa5;
     color:#343641;

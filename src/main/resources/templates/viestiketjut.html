@@ -20,7 +20,7 @@
         <form action="#" th:action="@{/}" th:object="${lisattava}" method="post">
             <!--<input th:name="kayttaja.nimimerkki" th:value="*{kayttaja.nimimerkki}"/>-->
             <input th:field="*{kayttaja.nimimerkki}"/>
-            <input th:type="submit" value="HOME"/>
+            <input th:type="submit" value="HOME" class="nappi"/>
         </form>
 
     </li>
@@ -61,7 +61,7 @@
 
                     <td th:text="${viesti.aikaleima}" style="width:16%"></td>
                     <td th:text="${viesti.kayttaja.nimimerkki}" style="width:16%"></td>
-                    <td th:text="${viesti.teksti}" style="width:16%"></td>
+                    <td th:text="${viesti.otsikko}" style="width:16%"></td>
 
                 <td></t>
 
