@@ -121,7 +121,7 @@ public class Kontrolleri {
             return "varattu";
         }
         model.addAttribute("viesti", "Käyttäjää ei löydy!");
-        model.addAttribute("luku", 2);
+        model.addAttribute("luku", 3);
         return "varattu";
     }
 

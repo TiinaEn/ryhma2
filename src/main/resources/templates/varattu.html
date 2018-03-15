@@ -37,6 +37,15 @@
             <input type="submit" value="Kirjaudu">
         </form>
     </div>
+
+    <div th:if="${luku} == 3">
+        <form th:action="@{/login}">
+            <input type="submit" value="Kirjaudu uudestaan">
+        </form>
+        <form th:action="@{/rekisterointi}">
+            <input type="submit" value="Rekisteröidy käyttäjäksi">
+        </form>
+    </div>
 </div>
 </body>
 </html>

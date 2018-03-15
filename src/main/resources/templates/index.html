@@ -24,6 +24,7 @@
             </form>
 
         </li>
+        <span th:if="${admin != null}">
         <li><a href="/profiili">profiili</a></li>
         <span th:if="${admin == null}">
         <li><a href="/login">login</a></li>
@@ -40,7 +41,10 @@
 <div style="width: 100%; border-radius: 10px;">
 
     <table style="width: 100%; ">
-        <tr style="border: solid black; width:100%;"><th>Ajanhetki</th><th>Käyttäjä</th><th>Viesti</th><th>Vastaa</th><th>Poista</th></tr>
+        <tr style="border: solid black; width:100%;"><th>Ajanhetki</th><th>Käyttäjä</th><th>Viesti</th>
+            <span th:if="${admin != null}"><th>Vastaa</th>
+                <span th:if="${admin != null}"><th>Poista</th></tr>
+
         <tr th:each="viesti: ${viestit}" style="height: 15px;">
 
             <form action="#" th:action="@{/reply}" th:object="${lisattava}" method="post">
