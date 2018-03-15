@@ -31,7 +31,7 @@
             <li>
             <span th:if="${admin != null}">
                   <form th:action="@{/kayttaja}">
-                    <input th:type="submit" value="PROFIILI"/>
+                    <input th:type="submit" value="PROFIILI" class="nappi"/>
                     <input th:type="hidden" th:name="id" th:value="${kirjautunut.id}"/>
                   </form></span>
             </li>

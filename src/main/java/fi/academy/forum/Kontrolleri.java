@@ -175,7 +175,7 @@ public class Kontrolleri {
                 model.addAttribute("viestit", viestilista);
                 model.addAttribute("lisattava", new Viesti(kayttaja));
                 model.addAttribute("admin", kirjautunut.get().getAdminoikeus());
-                return "index";
+                return "viestiketjut";
             }
             model.addAttribute("viesti", "Väärä salasana!");
             model.addAttribute("luku", 2);
