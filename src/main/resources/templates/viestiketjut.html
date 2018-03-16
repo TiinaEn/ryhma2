@@ -12,14 +12,12 @@
     <img src="../banneri.png" alt="Banneri" align="center" width="100%" style="border-radius:15px">
 </div>
 
-
+<!-- Navigaatiossa on piilotettu/vaihdettu nappuloita riippuen oletko sisäänkirjautunut vai et -->
 <div class="navi"><ul>
-
     <li>
         <span th:if="${admin != null}">
                 <form th:action="@{/omattiedot}">
                     <input th:type="submit" value="PROFIILI" class="nappi"/>
-
                 </form>
         </span>
     </li>
@@ -48,9 +46,9 @@
 </ul></div>
 <div class="content">
     <div style="width: 100%; border-radius: 10px;">
-
         <table style="width: 100%; ">
             <tr style="border: solid black; width:100%;"><th>Postausaika</th><th>AP</th><th>Aihe</th><th></th></tr>
+            <!-- Tulostetaan kaikki viestiketjut, annetaan perustiedot ja nappula kyseiseen keskusteluun siirtymiselle -->
             <tr th:each="viesti: ${viestit}" style="height: 15px;">
 
                 
@@ -78,11 +76,13 @@
 
     </div>
     <div class="viivoitus">
+        <!-- jos et ole sisäänkirjautunut, tarjotaan vinkkiä miten pääset mukaan keskusteluun -->
    <div th:if="${admin == null}">*Haluatko osallistua keskusteluun? <a href="/login">Kirjaudu sisään!</a> Tai jos et ole vielä käyttäjä
         <a href="/rekisterointi">Rekisteröidy tästä!</a>*</div>
     <div id="divi2">
     <span th:if="${admin != null}">
 
+        <!-- jos olet sisäänkirjautunut, annetaan mahdollisuus syöttää uusi viestiketju -->
     <form action="#" th:action="@{/lisaaviestiketju}" th:object="${lisattava}" method="post">
         <div></br><input th:type="hidden" th:field="*{kayttaja.nimimerkki}"/></div>
         <div>Syötä otsikko: </br><input th:field="*{otsikko}"style="margin-left:2px; margin-bottom:2px;"/></div>

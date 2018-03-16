@@ -12,17 +12,15 @@
     <img src="../banneri.png" alt="Banneri" align="center" width="100%" style="border-radius:15px">
 </div>
 
+<!-- Navigaatiossa on piilotettu/vaihdettu nappuloita riippuen oletko sisäänkirjautunut vai et -->
 
     <div class="navi">
-
         <ul>
             <li>
                 <form th:action="@{/}"th:object="${lisattava}">
                     <input th:type="submit" value="KESKUSTELUPALSTA" class="nappi"/>
                 </form>
             </li>
-
-
             <li>
             <span th:if="${admin != null}">
                   <form th:action="@{/kayttaja}">
@@ -58,17 +56,19 @@
 
     <table style="width: 100%; ">
         <tr style="border: solid black; width:100%;"><th>Ajanhetki</th><th>Käyttäjä</th><th>Viesti</th>
+            <!-- näytetään lisä ominaisuuksia jos olet admin -->
             <span th:if="${admin != null}"><th>Vastaa</th> </span>
                 <span th:if="${admin != null}"><th>Poista</th> </span>
             </tr>
 
-
+        <!-- tulostetaan kaikki viestit annetusta viestiketjusta sekä tarjoillaan lisää tietoa viestistä. -->
         <tr th:each="viesti: ${viestit}" style="height: 15px;">
             <form action="#" th:action="@{/reply}" th:object="${lisattava}" method="post">
                 <td th:text="${viesti.aikaleima}" style="width:20%"></td>
                 <td><a th:href="@{/kayttaja}+'?id='+${viesti.kayttaja.id}" style="text-decoration: none" th:text="${viesti.kayttaja.nimimerkki}"/></td>
                 <td style="display:none" th:text="${viesti.id}"></td>
                 <td th:text="${viesti.teksti}" style="width: 55%">
+                <!-- vastausnappula! -->
                 <td th:if="${admin != null}">
                         <div class="vastauslaatikko">
                             <input style="display:none" th:name="vastattuviesti.id" th:value="${viesti.id}"/>
@@ -77,6 +77,7 @@
                             <input th:type="submit" value="Lähetä" class="namiska"/>
                         </div>
                 </td>
+                <!-- vastausnappula piiloon tarvittaessa -->
                 <td th:unless="${admin != null}">
                     <div style="display: none">
                         <div class="vastauslaatikko">
@@ -89,6 +90,7 @@
 
 
             </form>
+            <!-- viestin poiston mahdollistava koodinpätkä, joka ottaa huomioon admin-oikeudet (admin voi poistaa mitä vain, käyttäjät vain omia viestejä) -->
             <form action="#" th:action="@{/poista}" method="post" th:if="${kirjautunut}">
                 <input th:type="hidden" th:name="kayttaja.nimimerkki" th:value="${kirjautunut.nimimerkki}"/>
                 <input th:type="hidden" th:name="id" th:value="${viesti.id}"/>
@@ -102,10 +104,14 @@
 </div>
     <br/>
         <div class="viivoitus">
-<div th:if="${admin == null}">*Haluatko osallistua keskusteluun? <a href="/login">Kirjaudu sisään!</a> Tai jos et ole vielä käyttäjä
+            <!-- jos et ole sisäänkirjautunut, tarjotaan vinkkiä miten pääset mukaan keskusteluun -->
+
+            <div th:if="${admin == null}">*Haluatko osallistua keskusteluun? <a href="/login">Kirjaudu sisään!</a> Tai jos et ole vielä käyttäjä
     <a href="/rekisterointi">Rekisteröidy tästä!</a>*</div>
 <div id="divi2">
     <span th:if="${admin != null}">
+                <!-- jos olet sisäänkirjautunut, annetaan mahdollisuus syöttää uusi viesti-->
+
     <form action="#" th:action="@{/lisaaviesti}" th:object="${lisattava}" method="post" th:if="${kirjautunut}">
         <input th:type="hidden" th:name="kayttaja.nimimerkki" th:value="${kirjautunut.nimimerkki}"/>
         <input type="hidden" th:field="*{viestiketju}"/>

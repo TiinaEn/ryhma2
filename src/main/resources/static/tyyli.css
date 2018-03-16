@@ -117,7 +117,7 @@ ul {
     text-decoration: none;
 }
 
-/* Change the link color to #111 (black) on hover */
+
 .nappi:hover {
     border-radius: 10px;
     background-color: #6abfa5;
@@ -128,19 +128,3 @@ ul {
     border-top: solid #343641;
     margin-top: 10px;
 }
-/* JOS haluamme piilottaa reply-laatikon, täällä on tarvittavat koodit
-.vastauslaatikko {
-    display: none;
-}
-
-  <script>
-       function toggleReplyVisibility(event) {
-    var stopsToggle = event.target.firstElementChild;
-if (stopsToggle.style.display === "none") {
-    stopsToggle.style.display = "block";
-} else {
-      stopsToggle.style.display = "none";
-  }
-}
-</script>
-*/
