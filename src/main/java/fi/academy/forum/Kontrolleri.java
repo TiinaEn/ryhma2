@@ -215,12 +215,12 @@ public class Kontrolleri {
         k.setViestienMaara(k.getViestienMaara()-1);
         repo.deleteById(viesti.getId());
 
-        List<Viesti> viestilista = repo.etsiKaikkiAikajarjestyksessa();
+        List<Viesti> viestilista = repo.etsiKaikkiViestiketjut();
         model.addAttribute("viestit", viestilista);
         model.addAttribute("lisattava", new Viesti(k));
         model.addAttribute("kirjautunut", k);
         model.addAttribute("admin", k.getAdminoikeus());
-        return "index";
+        return "viestiketjut";
     }
 
     @GetMapping("/logout")
