@@ -16,18 +16,6 @@
     <div class="navi">
 
         <ul>
-
-<!--            <li>
-
-                <form action="#" th:action="@{/}" th:object="${lisattava}" method="post">
-                    &lt;!&ndash;<input th:name="kayttaja.nimimerkki" th:value="*{kayttaja.nimimerkki}"/>&ndash;&gt;
-
-                    &lt;!&ndash; TÄMÄ HALUTAAN OIKEAAN YLÄKULMAAN NIIN TIEDETÄÄN KUKA ON KIRJAUTUNEENA &ndash;&gt;
-                    &lt;!&ndash;<input th:text="'Kirjautuneena:' + *{kayttaja.nimimerkki}"/>&ndash;&gt;
-                    <input th:type="submit" value="HOME" class="nappi"/>
-                </form>
-
-            <li>-->
             <li>
                 <form th:action="@{/}"th:object="${lisattava}">
                     <input th:type="submit" value="KESKUSTELUPALSTA" class="nappi"/>
@@ -81,20 +69,20 @@
                 <td><a th:href="@{/kayttaja}+'?id='+${viesti.kayttaja.id}" style="text-decoration: none" th:text="${viesti.kayttaja.nimimerkki}"/></td>
                 <td style="display:none" th:text="${viesti.id}"></td>
                 <td th:text="${viesti.teksti}" style="width: 55%">
-                <td th:if="${admin != null}" style="width: 20%">
+                <td th:if="${admin != null}">
                         <div class="vastauslaatikko">
                             <input style="display:none" th:name="vastattuviesti.id" th:value="${viesti.id}"/>
                             <input style="display:none" th:field="*{kayttaja.nimimerkki}"/>
-                            <input th:field="*{teksti}" style="width:100%"/>
+                            <input th:field="*{teksti}" style="width:53%"/>
                             <input th:type="submit" value="Lähetä" class="namiska"/>
                         </div>
                 </td>
-                <td th:unless="${admin != null}" style="width: 20%">
+                <td th:unless="${admin != null}">
                     <div style="display: none">
                         <div class="vastauslaatikko">
                             <input style="display:none" th:name="vastattuviesti.id" th:value="${viesti.id}"/>
                             <input style="display:none" th:field="*{kayttaja.nimimerkki}"/>
-                            <input th:field="*{teksti}" style="width:100%"/>
+                            <input th:field="*{teksti}" style="width:53%"/>
                             <input th:type="submit" value="Lähetä" class="namiska"/>
                         </div></div>
                 </td>
@@ -119,7 +107,6 @@
 <div id="divi2">
     <span th:if="${admin != null}">
     <form action="#" th:action="@{/lisaaviesti}" th:object="${lisattava}" method="post" th:if="${kirjautunut}">
-        <!--<div><input th:type="hidden" th:field="*{kayttaja.nimimerkki}"/></div>-->
         <input th:type="hidden" th:name="kayttaja.nimimerkki" th:value="${kirjautunut.nimimerkki}"/>
         <input type="hidden" th:field="*{viestiketju}"/>
         <div><textarea th:field="*{teksti}" rows="10" cols="94" style="margin-left:2px; margin-bottom:2px;"/></div>

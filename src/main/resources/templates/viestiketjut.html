@@ -15,13 +15,6 @@
 
 <div class="navi"><ul>
 
-<!--    <li>
-        <form th:action="@{/}"th:object="${lisattava}">
-            <input th:type="submit" value="KESKUSTELUPALSTA" class="nappi"/>
-        </form>
-    </li>-->
-
-
     <li>
         <span th:if="${admin != null}">
                 <form th:action="@{/omattiedot}">
@@ -71,7 +64,6 @@
 
                         <input th:type="hidden" th:name="kayttaja.nimimerkki" th:value="${kayttaja}?${kayttaja.nimimerkki}:''"/>
 
-                        <!--<input th:name="nimimerkki" th:value="${viesti.kayttaja.nimimerkki}"/>-->
                         <input th:type="submit" value="Keskustelemaan!" class="namiska"/>
 
 

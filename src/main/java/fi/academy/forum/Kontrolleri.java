@@ -19,7 +19,6 @@ public class Kontrolleri {
 
     @GetMapping("/")
     public String listaaViestit (Model model) {
-        /*model.addAttribute("viestit", repo.findAll());*/
         List<Viesti> viestilista = repo.etsiKaikkiViestiketjut();
         model.addAttribute("viestit", viestilista);
         model.addAttribute("lisattava", new Viesti());
@@ -64,7 +63,6 @@ public class Kontrolleri {
 
     @GetMapping("/viestiketjut")
     public String listaaViestiketjut (Model model) {
-        /*model.addAttribute("viestit", repo.findAll());*/
         List<Viesti> viestiLista = repo.etsiKaikkiViestiketjut();
         model.addAttribute("viestit", viestiLista);
         model.addAttribute("lisattava", new Viesti());
@@ -80,23 +78,11 @@ public class Kontrolleri {
 
 
                 model.addAttribute("kirjautunut", kirjautunut.get());
-              /*  model.addAttribute("viestit", repo.findAll());*/
                 List<Viesti> viestilista = repo.etsiKaikkiViestiketjut();
                 model.addAttribute("viestit", viestilista);
                 model.addAttribute("lisattava", new Viesti(kirjautunut.get()));
                 model.addAttribute("admin", kirjautunut.get().getAdminoikeus());
                 return "viestiketjut";
-
-
-
-//        Optional<Kayttaja> kirjautunut = krepo.findByNimimerkki(viesti.getKayttaja().getNimimerkki());
-//        viesti.setKayttaja(kirjautunut.get());
-//        System.out.println("!!!!!!" + viesti.getId());
-//        repo.deleteById(viesti.getId());
-//        model.addAttribute("viestit", repo.findAll());
-//        model.addAttribute("lisattava", new Viesti(kirjautunut.get()));
-//        model.addAttribute("kirjautunut", kirjautunut.get());
-//        model.addAttribute("admin", kirjautunut.get().getAdminoikeus());
 
 
 
@@ -160,7 +146,7 @@ public class Kontrolleri {
         }
         viesti.setKayttaja(k);
         Viesti vastattu = repo.findById(viesti.getVastattuviesti().getId()).get();
-        viesti.setTeksti("|| " + vastattu.getKayttaja().getNimimerkki() + ": '" + vastattu.getTeksti() + "' ||" + viesti.getTeksti() );
+        viesti.setTeksti("|| " + vastattu.getKayttaja().getNimimerkki() + ": '" + vastattu.getTeksti() + "' ||                                   " + viesti.getTeksti() );
         k.setViestienMaara(k.getViestienMaara()+1);
         viesti.setViestiketju(vastattu.getViestiketju());
         repo.save(viesti);
@@ -198,7 +184,6 @@ public class Kontrolleri {
                 model.addAttribute("kirjautunut", kirjautunut.get());
 
 
-                /*model.addAttribute("viestit", repo.findAll());*/
                 List<Viesti> viestilista = repo.etsiKaikkiViestiketjut();
 
                 model.addAttribute("viestit", viestilista);
